@@ -1,0 +1,42 @@
+{
+    "breakfast": {
+        "name": "Brakfast",
+        "slug" : "breakfast",
+        "description": "",
+        "posts" : [
+            "lorem-ipsum", "ipsum-lorem"
+        ]
+    },
+    "lunch": {
+        "name": "Lunch",
+        "slug" : "lunch",
+        "description": "",
+        "posts" : [
+            "lorem-ipsum", "ipsum-lorem"
+        ]
+    },
+    "dinner": {
+        "name": "Dinner",
+        "slug" : "dinner",
+        "description": "",
+        "posts" : [
+            "lorem-ipsum", "ipsum-lorem"
+        ]
+    },
+    "snack": {
+        "name": "Evening snack",
+        "slug" : "snack",
+        "description": "",
+        "posts" : [
+            "lorem-ipsum", "ipsum-lorem"
+        ]
+    },
+    "supper": {
+        "name": "Supper",
+        "slug" : "supper",
+        "description": "",
+        "posts" : [
+            "lorem-ipsum", "ipsum-lorem"
+        ]
+    }
+}

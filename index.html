@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- SITE TITTLE -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yum</title>
+  
+  <!-- PLUGINS CSS STYLE -->
+
+  <!-- Bootstrap -->
+  <link href="../plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="icons/all.css" rel="stylesheet">
+  <!-- CUSTOM CSS -->
+  <link href="css/style.min.css" rel="stylesheet">
+
+  <!-- FAVICON -->
+  <link href="images/favicon.png" rel="shortcut icon">
+
+</head>
+
+<body class="body-wrapper">
+
+
+<!--========================================
+=            Navigation Section            =
+=========================================-->
+
+<nav class="navbar main-nav border-less fixed-top navbar-expand-lg p-0">
+  <div class="container-fluid p-0">
+      <!-- logo -->
+      <a class="navbar-brand" href="index.html" id="logo">
+        <img src="images/yum-logo.svg" alt="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="fa fa-bars"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mx-auto">
+
+        <li class="nav-item dropdown active dropdown-slide">
+          <a class="nav-link" href="#"  data-toggle="dropdown">Meals
+            <span>/</span>
+          </a>
+          <!-- Dropdown list -->
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="index.html">Breakfast</a>
+            <a class="dropdown-item" href="homepage-two.html">Lunch</a>
+            <a class="dropdown-item" href="index.html">Dinner</a>
+            <a class="dropdown-item" href="homepage-two.html">Evening snack</a>
+            <a class="dropdown-item" href="index.html">Supper</a>
+            <a class="dropdown-item" href="homepage-two.html">Dessert</a>
+          </div>
+        </li>
+
+        <li class="nav-item dropdown active dropdown-slide">
+          <a class="nav-link" href="#"  data-toggle="dropdown">Diet
+            <span>/</span>
+          </a>
+          <!-- Dropdown list -->
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="index.html">Vege</a>
+            <a class="dropdown-item" href="homepage-two.html">Pescovege</a>
+            <a class="dropdown-item" href="index.html">Meat</a>
+          </div>
+        </li>
+		
+        <li class="nav-item dropdown active dropdown-slide">
+          <a class="nav-link" href="#"  data-toggle="dropdown">Dish type
+            <span>/</span>
+          </a>
+          <!-- Dropdown list -->
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="index.html">eintopf</a>
+            <a class="dropdown-item" href="homepage-two.html">soup</a>
+            <a class="dropdown-item" href="index.html">pasta</a>
+            <a class="dropdown-item" href="index.html">lorem</a>
+            <a class="dropdown-item" href="homepage-two.html">ipsum</a>
+            <a class="dropdown-item" href="index.html">dolor</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="speakers.html">Tags
+          </a>
+        </li>
+      </ul>
+      <a href="#" class="ticket yum-add-new">
+        <i class="fas fa-plus-circle"></i>
+        <span>Add new</span>
+      </a>
+      </div>
+  </div>
+</nav>
+
+<!--====  End of Navigation Section  ====-->
+
+
+
+<!--================================
+=            Page Title            =
+=================================-->
+
+<section class="page-title bg-title overlay-dark">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center">
+				<div class="title">
+					<h3>Latest recipes</h3>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+
+<!--====  End of Page Title  ====-->
+
+
+
+<!--================================
+=            CONTENT            =
+=================================-->
+
+<section class="news section">
+	<!-- <div class="row"> -->
+		<div class="col-10 mx-auto">
+			<div class="container-wide">
+				<div class="row mt-30">
+					<!-- sidebar -->
+					<div class="col-xl-3 col-lg-4 col-md-5 col-sm-5 mx-auto">
+						<div class="sidebar">
+							<!-- Search Widget -->
+							<div class="widget search p-0">
+								<div class="input-group">
+									<input type="text" class="form-control main m-0" id="expire" placeholder="Search...">
+									<span class="input-group-addon"><i class="fa fa-search"></i></span>
+								</div>
+							</div>
+							<!-- Category Widget -->
+							<div class="widget category">
+								<!-- Widget Header -->
+								<h5 class="widget-header">Meals</h5>
+								<ul class="category-list m-0 p-0">
+									<li><a href="" class="meal breakfast">Breakfast<span class="float-right">(6)</span></a></li>
+									<li><a href="" class="meal lunch">Lunch<span class="float-right">(9)</span></a></li>
+									<li><a href="" class="meal dinner">Dinner<span class="float-right">(3)</span></a></li>
+									<li><a href="" class="meal snack">Evening snack<span class="float-right">(5)</span></a></li>
+									<li><a href="" class="meal supper">Supper<span class="float-right">(3)</span></a></li>
+									<li><a href="" class="meal dessert">Dessert<span class="float-right">(7)</span></a></li>
+								</ul>
+							</div>
+
+							<!-- Popular Tag Widget -->
+							<div class="widget tags">
+								<!-- Widget Header -->
+								<h5 class="widget-header">Types</h5>
+								<ul class="list-inline">
+									<li class="list-inline-item"><a href="#">soup</a></li>
+									<li class="list-inline-item"><a href="#">salad</a></li>
+									<li class="list-inline-item"><a href="#">eintopf</a></li>
+									<li class="list-inline-item"><a href="#">steaming</a></li>
+								</ul>
+							</div>					
+
+							<!-- Category Widget -->
+							<div class="widget category">
+								<!-- Widget Header -->
+								<h5 class="widget-header">Diet</h5>
+								<ul class="category-list m-0 p-0">
+									<li><a href="" class="diet pescovege">Pescovege<span class="float-right">(6)</span></a></li>
+									<li><a href="" class="diet vege">Vege<span class="float-right">(9)</span></a></li>
+									<li><a href="" class="diet meat">With meat<span class="float-right">(3)</span></a></li>
+								</ul>
+							</div>		
+
+							<!-- Popular Tag Widget -->
+							<div class="widget tags">
+								<!-- Widget Header -->
+								<h5 class="widget-header">Popular Tags</h5>
+								<ul class="list-inline">
+									<li class="list-inline-item"><a href="#">Pasta</a></li>
+									<li class="list-inline-item"><a href="#">Low IG</a></li>
+									<li class="list-inline-item"><a href="#">Bread</a></li>
+									<li class="list-inline-item"><a href="#">Simple</a></li>
+									<li class="list-inline-item"><a href="#">Sports</a></li>
+									<li class="list-inline-item"><a href="#">Music</a></li>
+									<li class="list-inline-item"><a href="#">Culture</a></li>
+									<li class="list-inline-item"><a href="#">Social</a></li>
+									<li class="list-inline-item"><a href="#">News</a></li>
+									<li class="list-inline-item"><a href="#">Events</a></li>
+									<li class="list-inline-item"><a href="#">Sports</a></li>
+									<li class="list-inline-item"><a href="#">Music</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- main column -->
+					<div class="col-xl-9 col-lg-8 col-md-7 col-sm-7  mx-auto">
+						<div class="block">
+							<div class="row equal-parent row-eq-height">
+								<div class="col-xl-4 col-lg-6 col-md-12 col-12 equal-item">
+									<div class="blog-post h-100 ">
+										<div class="post-thumb">
+											<a href="news-single.html">
+												<img src="http://www.fillmurray.com/200/300" alt="post-image" class="img-fluid">
+											</a>
+										</div>
+										<div class="post-content">
+											<div class="date yum-diet pescovege">
+											</div>
+											<div class="date yum-meal dessert"><span>dessert</span></div>
+											<div class="post-title">
+												<h2><a href="news-single.html">Elementum purus id ultrices.</a></h2>
+											</div>
+											<div class="post-meta">
+												<ul class="list-inline">
+													<li class="list-inline-item">
+														Type:
+														<a href="#">Soup</a>,
+														<a href="#">Eintopf</a>,
+														<a href="#">Salad</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class=" col-xl-4 col-lg-6 col-md-12 col-12 equal-item">
+									<div class="blog-post h-100">
+										<div class="post-thumb">
+											<a href="news-single.html">
+												<img src="http://www.fillmurray.com/200/300" alt="post-image" class="img-fluid">
+											</a>
+										</div>
+										<div class="post-content">
+											<div class="date yum-diet vege">
+											</div>
+											<div class="date yum-meal breakfast"><span>breakfast</span></div>
+											<div class="post-title">
+												<h2><a href="news-single.html">Pasta with cheese</a></h2>
+											</div>
+											<div class="post-meta">
+												<ul class="list-inline">
+													<li class="list-inline-item">
+														Type:
+														<a href="#">Soup</a>,
+														<a href="#">Eintopf</a>,
+														<a href="#">Salad</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class=" col-xl-4 col-lg-6 col-md-12 col-12 equal-item">
+									<div class="blog-post h-100">
+										<div class="post-thumb">
+											<a href="news-single.html">
+												<img src="http://www.fillmurray.com/200/305" alt="post-image" class="img-fluid">
+											</a>
+										</div>
+										<div class="post-content">
+											<div class="date yum-diet meat">
+											</div>
+											<div class="date yum-meal lunch"><span>lunch</span></div>
+											<div class="post-title">
+												<h2><a href="news-single.html">Elementum purus id ultrices.</a></h2>
+											</div>
+											<div class="post-meta">
+												<ul class="list-inline">
+													<li class="list-inline-item">
+														Type:
+														<a href="#">Soup</a>,
+														<a href="#">Eintopf</a>,
+														<a href="#">Salad</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class=" col-xl-4 col-lg-6 col-md-12 col-12 equal-item">
+									<div class="blog-post h-100">
+										<div class="post-thumb">
+											<a href="news-single.html">
+												<img src="http://www.fillmurray.com/200/300" alt="post-image" class="img-fluid">
+											</a>
+										</div>
+										<div class="post-content">
+											<div class="date yum-diet pescovege">
+											</div>
+											<div class="date yum-meal dinner"><span>dinner</span></div>
+											<div class="post-title">
+												<h2><a href="news-single.html">Elementum purus id ultrices.</a></h2>
+											</div>
+											<div class="post-meta">
+												<ul class="list-inline">
+													<li class="list-inline-item">
+														Type:
+														<a href="#">Soup</a>,
+														<a href="#">Eintopf</a>,
+														<a href="#">Salad</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class=" col-xl-4 col-lg-6 col-md-12 col-12 equal-item">
+									<div class="blog-post h-100">
+										<div class="post-thumb">
+											<a href="news-single.html">
+												<img src="http://www.fillmurray.com/200/300" alt="post-image" class="img-fluid">
+											</a>
+										</div>
+										<div class="post-content">
+											<div class="date yum-diet meat">
+											</div>
+											<div class="date yum-meal snack"><span>evening snack</span></div>
+											<div class="post-title">
+												<h2><a href="news-single.html">Elementum purus id ultrices.</a></h2>
+											</div>
+											<div class="post-meta">
+												<ul class="list-inline">
+													<li class="list-inline-item">
+														Type:
+														<a href="#">Soup</a>,
+														<a href="#">Eintopf</a>,
+														<a href="#">Salad</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class=" col-xl-4 col-lg-6 col-md-12 col-12 equal-item">
+									<div class="blog-post h-100">
+										<div class="post-thumb">
+											<a href="news-single.html">
+												<img src="http://www.fillmurray.com/200/300" alt="post-image" class="img-fluid">
+											</a>
+										</div>
+										<div class="post-content">
+											<div class="date yum-diet vege">
+											</div>
+											<div class="date yum-meal supper"><span>supper</span></div>
+											<div class="post-title">
+												<h2><a href="news-single.html">Elementum purus id ultrices.</a></h2>
+											</div>
+											<div class="post-meta">
+												<ul class="list-inline">
+													<li class="list-inline-item">
+														Type:
+														<a href="#">Soup</a>,
+														<a href="#">Eintopf</a>,
+														<a href="#">Salad</a>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class=" col-xl-4 col-lg-6 col-md-12 col-12 equal-item">
+									<!-- Pagination -->
+									<nav>
+									<ul class="pagination">
+										<li class="page-item">
+										<a class="page-link" href="#" aria-label="prev">
+											<span aria-hidden="true"><i class="fa fa-angle-left"></i></span>
+											<span class="sr-only">prev</span>
+										</a>
+										</li>
+										<li class="page-item active"><a class="page-link" href="#">1</a></li>
+										<li class="page-item"><a class="page-link" href="#">2</a></li>
+										<li class="page-item"><a class="page-link" href="#">3</a></li>
+										<li class="page-item">
+										<a class="page-link" href="#" aria-label="Next">
+											<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+											<span class="sr-only">Next</span>
+										</a>
+										</li>
+									</ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- </div> -->
+</section>
+
+<!--====  End of News Posts  ====-->
+
+
+<!--============================
+=            Footer            =
+=============================-->
+
+<footer class="footer-main">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="block text-center">
+            <div class="footer-logo">
+              <!-- <img src="images/footer-logo.png" alt="logo" class="img-fluid"> -->
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+</footer>
+<!-- Subfooter -->
+<footer class="subfooter">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 align-self-center">
+        <div class="copyright-text">
+          <p><a href="#">Yum</a> 2021 </p>
+		  <p><a href="https://www.flaticon.com/packs/cooking-176">cooking icon pack</a>, <a href="https://www.flaticon.com/packs/food-45">food icon pack</a> and <a href="https://www.flaticon.com/packs/breakfast-42">breakfast icon pack</a></p>
+        </div>
+      </div>
+      <div class="col-md-6">
+          <a href="#" class="to-top"><i class="fa fa-angle-up"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- JAVASCRIPTS -->
+  <!-- jQuey -->
+  <!-- <script src="../plugins/jquery/jquery.js"></script> -->
+  <!-- Popper js -->
+  <!-- <script src="../plugins/popper/popper.min.js"></script> -->
+  <!-- Bootstrap 4 -->
+  <!-- <script src="../plugins/bootstrap/js/bootstrap.min.js"></script> -->
+
+  <script src="js/all.js"></script>
+ 
+	<script>
+			class BS4breakpoints {
+				constructor(delay = 350, prefix = "current breakpoint", ) {
+					this.prefix = prefix;
+					this.delay = delay;
+					this.build();
+					this.xl = document.querySelector("#BS4breakpoints .xl");
+					this.lg = document.querySelector("#BS4breakpoints .lg");
+					this.md = document.querySelector("#BS4breakpoints .md");
+					this.sm = document.querySelector("#BS4breakpoints .sm");
+					this.xs = document.querySelector("#BS4breakpoints .xs");
+				}
+
+			build() {
+
+				let breakpoints = {
+					xl: "d-none d-xl-block xl",
+					lg: "d-none d-lg-block d-xl-none lg",
+					md: "d-none d-md-block d-lg-none md",
+					sm: "d-none d-sm-block d-md-none sm",
+					xs: "d-block d-sm-none xs",
+				}
+				var parent = document.createElement("div");
+				parent.id = "BS4breakpoints";
+					for (const breakpoint in breakpoints) {
+
+						let child = document.createElement("div");
+						child.className = breakpoints[breakpoint]; 
+						parent.appendChild(child);
+					}
+				document.body.appendChild(parent);
+			}	
+			detect() {
+				if(window.getComputedStyle(this.xl).getPropertyValue("display") == "block") {
+					console.log('%c Bootstrap 4 breakpoint ', 'background: #222; color: #bada55');
+					console.log(this.prefix+": xl");
+				} else if(window.getComputedStyle(this.lg).getPropertyValue("display") == "block") {
+					console.log('%c Bootstrap 4 breakpoint ', 'background: #222; color: #bada55');
+					console.log(this.prefix+": lg");
+				} else if(window.getComputedStyle(this.md).getPropertyValue("display") == "block") {
+					console.log('%c Bootstrap 4 breakpoint ', 'background: #222; color: #bada55');
+					console.log(this.prefix+": md");
+				} else if(window.getComputedStyle(this.sm).getPropertyValue("display") == "block") {
+					console.log('%c Bootstrap 4 breakpoint ', 'background: #222; color: #bada55');
+					console.log(this.prefix+": sm");
+				} else if(window.getComputedStyle(this.xs).getPropertyValue("display") == "block") {
+					console.log('%c Bootstrap 4 breakpoint ', 'background: #222; color: #bada55');
+					console.log(this.prefix+": xs");
+				}
+			}
+
+			log() {
+				const func = (e) => this.detect();
+				function throttled(delay, fn) {
+						let lastCall = 0;
+							return function wrapper(...args) {
+								const now = (new Date).getTime();
+								if (now - lastCall < delay) {
+								return;
+								}
+								lastCall = now;
+								return fn(...args);
+							}
+						}
+				window.addEventListener("resize", throttled(this.delay, (e) => func(this.detect)));
+				this.detect();
+			}
+	}
+
+	document.addEventListener("DOMContentLoaded", function() {
+		let breakpoint = new BS4breakpoints();
+		breakpoint.log();
+	});
+
+	</script>
+</body>
+
+
+
+
+</html>

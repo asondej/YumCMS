@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+## rewrite condition
+    ## if the requestet directory does not exist
+    RewriteCond %{SCRIPT_FILENAME} !-d
+    ## if the requestet file does not exist
+    RewriteCond %{SCRIPT_FILENAME} !-f
+## rewrite rule
+    ## RewriteRule ^([^.]+)$ ./index.php?request=$1 [L,QSA]
+    RewriteRule ^(.*)$ ./index.php?request=$1 [L,QSA]
+        ## ^ redirect entire requested path to index.php and pass into a query variable 
+</IfModule>
