@@ -1,0 +1,10 @@
+{
+    "breakfast": {
+        "name": "Low GI",
+        "slug" : "breakfast",
+        "description": "",
+        "posts" : [
+            "lorem-ipsum", "ipsum-lorem"
+        ]
+    }
+}

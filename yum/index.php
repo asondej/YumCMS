@@ -5,37 +5,18 @@ include_once("debug/debug.php");
 
 require_once(__DIR__ . '/config.php');
 require_once(__DIR__ . '/library/yum.php');
-require_once(__DIR__ . '/library/classes/category.php');
-
+require_once(__DIR__ . '/library/classes/taxonomy.php');
+require_once(__DIR__ . '/library/classes/content.php');
+//dump(__NAMESPACE__);
 use Library\Yum;
 $yum = new Yum();
 
-// class Point {
-//     public int|float|string $number;
-//     public function __construct(
-//       public float $x = 1.0,
-//       protected float $y = 2,
-//       public string $z = "lorem",
-//     ) {
-//         echo $this->z;
-//     }
-//   }
+use Library\Classes\Taxonomy;
+use Library\Classes\Content;
+//debug(Taxonomy::get_diets());
 
-  echo match (8.0) {
-    '8.0'   => "Oh no!",
-    8.0     => "This is what I expected",
-  };
 
-//   $test = new Point();
-//   dump($test->x);
 
-dump($yum);
-
-// dump(data:$_GET, comment: "GET");
-
-print_r(get_debug_type($yum)) ;
-
-// dump($_REQUEST);
 
 // dump(filter_input(INPUT_GET, "request"), "filtrowanie");
 

@@ -1,6 +1,6 @@
 {
     "breakfast": {
-        "name": "Brakfast",
+        "name": "Breakfast",
         "slug" : "breakfast",
         "description": "",
         "posts" : [
