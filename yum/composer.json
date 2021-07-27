@@ -1,0 +1,12 @@
+{
+    "require": {
+        "league/commonmark": "^2.0"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Library\\" : "library"
+        }
+    }
+
+}

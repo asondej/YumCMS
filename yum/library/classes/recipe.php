@@ -4,7 +4,7 @@ namespace Library\Classes;
 
 // include ABS_PATH . 'library/classes/interface/interfacePost.php';
 
-use Library\Classes\Interface\InterfacePost;
+use Library\Interface\InterfacePost;
 
 class Recipe implements InterfacePost
 {

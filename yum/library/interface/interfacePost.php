@@ -1,7 +1,7 @@
 <?php 
 declare(strict_types=1);
 
-namespace Library\Classes\Interface;
+namespace Library\Interface;
 
 // debug();
 
