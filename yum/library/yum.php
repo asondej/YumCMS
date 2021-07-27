@@ -4,6 +4,7 @@ namespace Library;
 
 use Library\Classes\Taxonomy;
 use Library\Classes\Content;
+use Library\Classes\Recipe;
 
 class Yum 
 {
@@ -26,6 +27,9 @@ class Yum
         echo "slug: ". $this->slug;
         echo "<br>";
         echo "template: ".$this->template_type;
+
+        $recipe = new Recipe();
+        $recipe->getPost($this->slug);
 
        //debug(Content::is_diet($this->slug));
 
@@ -101,6 +105,11 @@ class Yum
                 $this->template_type = "page";
         }
 
+    }
+
+    public function build_template() :void
+    {
+        
     }
   
 }

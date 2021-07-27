@@ -5,7 +5,7 @@ namespace Library\Classes;
 
 class Content {
 
-    public static function get_content_path(string $content_type, string $slug, bool $for_recipe = false) : string
+    public static function get_content_path(string $content_type, string $slug) : string
     {
         return sprintf('%s/content/%s/%s', ABS_PATH, $content_type, $slug);
     }
@@ -21,7 +21,7 @@ class Content {
     }
     public static function is_post(string $slug): bool
     {
-        dump($slug);
+        //dump($slug);
         $slug_recipe = explode("/", $slug);
         $slug_recipe = array_pop( $slug_recipe ); // only post name, without "recipe"
 
