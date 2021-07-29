@@ -1,23 +1,20 @@
 {
     "vege": {
         "name": "vege",
-        "slug" : "vege",
         "description": "",
         "posts" : [
             "lorem-ipsum", "ipsum-lorem"
         ]
     },
-    "meat": {
+    "with-meat": {
         "name": "With meat",
-        "slug" : "with-meat",
         "description": "",
         "posts" : [
-            "lorem-ipsum", "ipsum-lorem"
+            "lorem-ipsum", "ipsum-lorem", "basic-chicken-soup"
         ]
     },
     "pescovege": {
         "name": "Pescovege",
-        "slug" : "pescovege",
         "description": "",
         "posts" : [
             "lorem-ipsum", "ipsum-lorem"

@@ -9,11 +9,16 @@ use Library\Classes\Recipe;
 class Yum 
 {
     protected string $slug;
+    protected string $template_type;
+    protected object $categories;//?
+
+
     protected array $meals;
     protected array $diets;
     protected array $types;
     protected array $tags;
-    protected $template_type;
+
+     protected string $template = "default";
 
     public function __construct()
     {
@@ -23,19 +28,34 @@ class Yum
         $this->types = Taxonomy::get_types();
         $this->tags = Taxonomy::get_tags();
 
+        // own methods
         $this->set_template($this->slug);
-        echo "slug: ". $this->slug;
-        echo "<br>";
-        echo "template: ".$this->template_type;
+        $this->build_template();
 
-        $recipe = new Recipe();
-        $recipe->getPost($this->slug);
+
+
+        echo "=====<br> slug: ". $this->slug;
+        echo "<br>";
+        echo "template type: ".$this->template_type;
+
+        // $recipe = new Recipe($this->slug);
+        // $post = $recipe->getPost();
+
+        // dump($post);
+        //echo $recipe->parse_markdown($this->slug);
+
+        //dump($this->meals);
+
+        // $recipe = new Recipe();
+        // $recipe->getPost($this->slug);
 
        //debug(Content::is_diet($this->slug));
 
+       
+
     }
 
-    protected function getSlug(): ?string
+    protected function getSlug() : ?string
     {
         //$query = filter_input(INPUT_SERVER, "REQUEST_URI"); // option for non-apache deployment
         $query = filter_input(INPUT_GET, "request");
@@ -56,7 +76,6 @@ class Yum
                         'tag'   => sprintf("tag-%s", $url_parts[1]),
                         default => "404"
                     };
-                    //dump(sprintf("diet-%s", $url_parts[1]));
                     return $match;
 
             } elseif (count($url_parts) === 2 && $url_parts[0] === "recipe") { //recipes
@@ -71,7 +90,7 @@ class Yum
             return null; // if something goes wrong
     }
 
-    protected function set_template(string $slug): void
+    protected function set_template() : void
     {
         switch(true) {
             case ( $this->getSlug() == "home" ):
@@ -84,8 +103,6 @@ class Yum
                 $this->template_type = "page";
                 break;
             case (Content::is_post( $this->getSlug() ) ):
-                dump("sprawdzanie czy jest postem");
-                dump($this->getSlug());
                 $this->template_type = "recipe";
                 break;
             case ( Content::is_meal( $this->getSlug() ) ):
@@ -102,14 +119,45 @@ class Yum
                 break;
             default: 
                 $this->slug = "404";
-                $this->template_type = "page";
+                $this->template_type = "404";
         }
 
     }
 
-    public function build_template() :void
+    public function build_template() : void //array //TODO: dokończyć te metode a w niej loadować templaty
     {
-        
+        switch ($this->template_type) {
+            case 'home':
+                $this->load_this_template();
+                break;
+            case 'rss':
+                # code...
+                break;
+            case 'page':
+                # code...
+                break;
+            case 'recipe':
+                $recipe = new Recipe($this->slug);
+                $recipe = $recipe->getPost($this->slug);
+                dump($recipe);
+                $this->load_this_template($recipe);
+                break;
+            case 'category_like':
+                # code...
+                break;
+            case 'tag_like':
+                # code...
+                break;
+            
+            default:
+                $this->load_this_template([]);
+                break;
+        }
+    }
+
+    private function load_this_template(array $page = []) : void {
+        $template_path = sprintf('%s/templates/%s/%s.php', ABS_PATH, $this->template, $this->template_type);
+        include($template_path);
     }
   
 }

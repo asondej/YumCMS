@@ -35,6 +35,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+yum/vendor/
 
 # TypeScript v1 declaration files
 typings/
@@ -74,4 +75,4 @@ typings/
 
 # FuseBox cache
 .fusebox/
-yum/vendor/
+

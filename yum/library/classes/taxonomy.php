@@ -58,4 +58,13 @@ class Taxonomy {
         }
     }
 
+    // public static function get_categories(string $type) : ?object { // return taxonony as json object
+    //     $file = file_get_contents(ABS_PATH . '/content/' . $type);
+    //     if (file_exists($file)) {
+    //         return json_decode($file, true);
+    //     } else {
+    //         return null;
+    //     }
+    // }
+
 }

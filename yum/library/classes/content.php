@@ -46,7 +46,6 @@ class Content {
             return false;
         }
     }
-
     public static function is_meal(string $slug) : bool
     {
 
@@ -140,4 +139,6 @@ class Content {
         }
 
     }
+
+
 }

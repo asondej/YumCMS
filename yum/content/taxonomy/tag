@@ -1,7 +1,13 @@
 {
-    "breakfast": {
+    "low-gi": {
         "name": "Low GI",
-        "slug" : "breakfast",
+        "description": "no desription here",
+        "posts" : [
+            "lorem-ipsum", "ipsum-lorem"
+        ]
+    }
+    "gluten=-free": {
+        "name": "Gluten free",
         "description": "",
         "posts" : [
             "lorem-ipsum", "ipsum-lorem"

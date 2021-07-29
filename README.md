@@ -5,7 +5,7 @@ Simple and database-less cookbook for your best recipes.
 
 ## What do I need?
 
-PHP and Apache.
+PHP, Apache and Composer.
 
 ## How to use it?
 

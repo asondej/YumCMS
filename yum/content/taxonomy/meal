@@ -1,7 +1,6 @@
 {
     "breakfast": {
         "name": "Breakfast",
-        "slug" : "breakfast",
         "description": "",
         "posts" : [
             "lorem-ipsum", "ipsum-lorem"
@@ -9,7 +8,6 @@
     },
     "lunch": {
         "name": "Lunch",
-        "slug" : "lunch",
         "description": "",
         "posts" : [
             "lorem-ipsum", "ipsum-lorem"
@@ -17,15 +15,13 @@
     },
     "dinner": {
         "name": "Dinner",
-        "slug" : "dinner",
         "description": "",
         "posts" : [
-            "lorem-ipsum", "ipsum-lorem"
+            "lorem-ipsum", "ipsum-lorem", "basic-chicken-soup"
         ]
     },
     "snack": {
         "name": "Evening snack",
-        "slug" : "snack",
         "description": "",
         "posts" : [
             "lorem-ipsum", "ipsum-lorem"
@@ -33,7 +29,6 @@
     },
     "supper": {
         "name": "Supper",
-        "slug" : "supper",
         "description": "",
         "posts" : [
             "lorem-ipsum", "ipsum-lorem"
