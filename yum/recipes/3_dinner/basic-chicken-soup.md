@@ -1,9 +1,9 @@
 {
     "title" : "Basic Chicken Soup",
-    "slug"  : "basic-chicken-soup2",
     "image" : "http://www.fillmurray.com/200/300"
 }
 ===
+
 - 1 whole chicken (about 4 pounds), cut into pieces (including back)
 - 8 cups water
 - Coarse salt
@@ -23,3 +23,13 @@ Remove remaining chicken; discard back and wings. Let cool slightly. Remove meat
 
 ### Step 4
 Stir in desired amount of chicken; reserve the rest for another use. Skim fat. Season with salt.
+
+===
+# Diet
+vege        []
+pescovege   []
+with meat   [x]
+# Tags: 
+classics, easy to make
+# Type:
+soup, 

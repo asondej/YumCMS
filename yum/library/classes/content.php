@@ -21,17 +21,14 @@ class Content {
     }
     public static function is_post(string $slug): bool
     {
-        //dump($slug);
-        $slug_recipe = explode("/", $slug);
-        $slug_recipe = array_pop( $slug_recipe ); // only post name, without "recipe"
 
-        $path = self::get_content_path("post", $slug_recipe);
-
-        //dump($path);
-        //dump(file_exists($path));
-        //dump($slug);
-        //dump(strpos($slug , "recipe/"));
-        if (file_exists($path) && strpos($slug , "recipe/") == 0) {
+       // dump($slug);
+        // debug(strpos($slug , "recipe/"));
+        // debug(Recipe::post_exist($slug));
+ 
+        if ( Recipe::post_exist($slug) && strpos($slug , "recipe/") == 0 ) { // the second cond will always be true, as slug is being set to "recipe/xxx" 
+            // TODO: fix this, one day, someday, maybe... ;-)
+            dump('tu jestesmy');
             return true;
         } else {
             return false;

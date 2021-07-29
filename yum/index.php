@@ -21,7 +21,17 @@ $yum = new Yum();
 
 /*
 //TODO: 
-- stworzyć klasę generującą meta
+- move everythIng except recipes to "app" folder
+    - change paths accordingly
+    - change namespaces (?)
+- make class for meta
+- read information abouT meal from folders not files
+- write information abouT meal to file (?) - yes, that would be helpfull for showing meals page
+- read information about rest of the taxonomies from.md files, not taxaonomy jsons
+- write information abot rest of the taxonomies from md. files to json files (on every app execution?)
+
+### ^^^ taxonomy class: create methods that scans folder (for meals) and recipe .md files (for other taxonomies) and make changes in respective taxonomy files
+
 */
 
 use Library\Classes\Taxonomy;

@@ -10,26 +10,24 @@ use League\CommonMark\CommonMarkConverter;
 class Recipe
 {
     private string $slug;
+    private string $file_name;
 
     public function __construct(string $slug) 
     {
         $this->slug = $slug;
-        //$this->getPost($this->slug);
 
-        //dump($this->slug);
+        $slug_recipe = explode("/", $this->slug);
+        $slug_recipe = array_pop($slug_recipe); // only post name, without "recipe"
+        $this->file_name = $slug_recipe;
     }
 
     public function getPost(): ?array
     {
     
-        $path = $this->get_post_file_path($this->slug);
-
-        if (!file_exists($path)) {
-            return null;
-        }
-
-        $post_raw = file_get_contents($path);
-        $post_raw = $this->split_raw($post_raw);
+        $path = $this->get_post_file_path();
+        
+        $post_raw = file_get_contents($path); 
+        $post_raw = $this->split_raw($post_raw);    
 
         $post_meta = $post_raw[0];
         $post_content_raw = $post_raw[1];
@@ -37,7 +35,7 @@ class Recipe
         $post = [
             "meta" => [
                 "title" => json_decode($post_meta, true)["title"],
-                "slug" => json_decode($post_meta, true)["slug"],
+                "slug" => $this->file_name,
                 "image" => json_decode($post_meta, true)["image"],
             ],
             "content" => $this->parse_markdown($post_content_raw),
@@ -45,6 +43,7 @@ class Recipe
 
         $post = array_merge($this->get_taxonomy($this->slug), $post);
       
+        //dump($post);
      
         return $post;
 
@@ -55,13 +54,70 @@ class Recipe
         return preg_split('/\s+={3,}\s+/', $raw_content);
     }
 
-    private function get_post_file_path() : string
+    private function get_post_file_path() : ?string
      {
-        $slug_recipe = explode("/", $this->slug);
-        $slug_recipe = array_pop( $slug_recipe ); // only post name, without "recipe"
 
-        $path = Content::get_content_path("post", $slug_recipe);
-        return $path;
+
+        $all_posts =  $this->list_all_recipes();
+        $all_posts_names = array_map(function($value) {
+            
+            $elements = explode("/", $value);
+            $filename = $elements[1];
+            $value = $filename;
+            return $value;
+
+        }, $all_posts);
+
+
+        if ( in_array( $this->file_name, $all_posts_names) ) {
+            $index_in_allPost_list = array_search($this->file_name, $all_posts);
+            $path = $all_posts[$index_in_allPost_list];
+            return ABS_PATH.'/recipes/'.$path.'.md';
+    
+        } else {
+            return null;
+        }
+
+    }
+
+    public static function post_exist(string $slug) : bool
+    {
+
+        $slug_name = explode("/", $slug);
+        $slug_name = array_pop($slug_name); // only post name, without "recipe"
+
+        $all_posts =  self::list_all_recipes();
+
+        $all_posts_names = array_map(function($value) {
+            $elements = explode("/", $value);
+            $filename = $elements[1];
+            $value = $filename;
+            return $value;
+
+        }, $all_posts);
+
+
+        if ( in_array( $slug_name, $all_posts_names) ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static function list_all_recipes(bool $folder_as_category = false) : array
+    {
+        $all_posts = glob("recipes/*/*.md", GLOB_BRACE);
+        $all_posts = array_map(function($value) use ($folder_as_category) {
+            $value = str_replace("recipes/", "", $value);
+            $value = str_replace(".md", "", $value);
+            if( $folder_as_category ) { // get rid of number prefix
+                $value = explode("_", $value);
+                $value = $value[1];
+            }
+            return $value;
+        }, $all_posts);
+
+        return $all_posts;
     }
     
     private function get_taxonomy() : ?array
@@ -75,9 +131,6 @@ class Recipe
             ]
         ];
 
-        $slug_recipe = explode("/", $this->slug);
-        $slug_recipe = array_pop( $slug_recipe ); // only post name, without "recipe"
-
         $diets = Taxonomy::get_diets();
         $meals = Taxonomy::get_meals();
         $types = Taxonomy::get_types();
@@ -85,25 +138,25 @@ class Recipe
 
         $this->push_taxonomy(
             $diets,
-            $slug_recipe,
+            $this->file_name,
             'diets',
             $taxonomy
         );
         $this->push_taxonomy(
             $meals,
-            $slug_recipe,
+            $this->file_name,
             'meals',
             $taxonomy
         );
         $this->push_taxonomy(
             $types,
-            $slug_recipe,
+            $this->file_name,
             'types',
             $taxonomy
         );
         $this->push_taxonomy(
             $tags,
-            $slug_recipe,
+            $this->file_name,
             'tags',
             $taxonomy
         );

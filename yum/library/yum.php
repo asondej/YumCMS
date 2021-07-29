@@ -34,24 +34,9 @@ class Yum
 
 
 
-        echo "=====<br> slug: ". $this->slug;
+        echo "<br>=====<br> slug: ". $this->slug;
         echo "<br>";
         echo "template type: ".$this->template_type;
-
-        // $recipe = new Recipe($this->slug);
-        // $post = $recipe->getPost();
-
-        // dump($post);
-        //echo $recipe->parse_markdown($this->slug);
-
-        //dump($this->meals);
-
-        // $recipe = new Recipe();
-        // $recipe->getPost($this->slug);
-
-       //debug(Content::is_diet($this->slug));
-
-       
 
     }
 
@@ -124,7 +109,7 @@ class Yum
 
     }
 
-    public function build_template() : void //array //TODO: dokończyć te metode a w niej loadować templaty
+    public function build_template() : void 
     {
         switch ($this->template_type) {
             case 'home':
@@ -139,7 +124,7 @@ class Yum
             case 'recipe':
                 $recipe = new Recipe($this->slug);
                 $recipe = $recipe->getPost($this->slug);
-                dump($recipe);
+                //dump($recipe);
                 $this->load_this_template($recipe);
                 break;
             case 'category_like':
@@ -156,8 +141,12 @@ class Yum
     }
 
     private function load_this_template(array $page = []) : void {
+
+
         $template_path = sprintf('%s/templates/%s/%s.php', ABS_PATH, $this->template, $this->template_type);
         include($template_path);
+
+        
     }
   
 }

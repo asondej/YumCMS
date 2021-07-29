@@ -110,3 +110,14 @@ function dump( $data, ?string $comment = null, bool $important = false, bool $ba
     }
 }
 
+
+function dumpdie( $data, ?string $comment = null, bool $important = false, bool $backtrace = false ) : void 
+{
+    dump($data,$comment,$important,$backtrace); exit; //TODO: FIX BACKTRACE PROBLEM
+}
+
+function debugdie( $data, ?string $comment = null, bool $important = false, bool $backtrace = false ) : void 
+{
+    debug($data,$comment,$important,$backtrace); exit; //TODO: FIX BACKTRACE PROBLEM
+}
+

@@ -12,6 +12,7 @@ class Taxonomy {
     private static $tags  = "tag";
     private static $diets  = "diet";
    
+    //TODO: create methods that scans folder (for meals) and recipe files (for other taxonomies) and make changes in respective taxonomy files
 
     public static function get_meals() : array
     {
@@ -58,13 +59,5 @@ class Taxonomy {
         }
     }
 
-    // public static function get_categories(string $type) : ?object { // return taxonony as json object
-    //     $file = file_get_contents(ABS_PATH . '/content/' . $type);
-    //     if (file_exists($file)) {
-    //         return json_decode($file, true);
-    //     } else {
-    //         return null;
-    //     }
-    // }
 
 }
