@@ -25,6 +25,7 @@ class Recipe
     {
     
         $path = $this->get_post_file_path();
+        //dump($path);
         
         $post_raw = file_get_contents($path); 
         $post_raw = $this->split_raw($post_raw);    
@@ -38,15 +39,58 @@ class Recipe
                 "slug" => $this->file_name,
                 "image" => json_decode($post_meta, true)["image"],
             ],
+            'taxonomy' => [
+                'meals' => $this->get_post_file_path(true),
+                'diets' => $this->get_post_diet(),
+                'types' => [],
+                'tags' => [],
+            ],
             "content" => $this->parse_markdown($post_content_raw),
         ];
 
         $post = array_merge($this->get_taxonomy($this->slug), $post);
       
-        //dump($post);
+        //dump($this->get_post_diet());
+        dump($this->get_post_taglike_taxonomies());
      
         return $post;
 
+    }
+
+    private function get_post_diet() : string
+    {
+        
+        $post_parts = $this->post_parts_array();
+        $diet = $post_parts[2];
+        //$pattern = '/(\b\w*\s*\w+\s+\w*\b)\s*(\[.*x.*\])/';
+        $pattern = '/(\b\w*\s*\w+\b)\s*(\[.*x.*\])/';
+        $matches = '';
+        if(stripos($diet, "diet") ) {
+
+            preg_match($pattern, $diet, $matches);
+            $diet = $matches[1] ?? '';
+            return $diet;
+        }
+
+    }
+
+    private function get_post_taglike_taxonomies() : array
+    {
+        $post_parts = $this->post_parts_array();
+        $tax = $post_parts[3];
+        $output_array = []; 
+       // preg_match_all('/([^,\n]+)/', $tax, $output_array); // two arrays
+       preg_match_all('/([^,\n]+)/',  $tax , $output_array,PREG_OFFSET_CAPTURE);
+        dump($output_array);
+        return [];
+    }
+
+    private function post_parts_array() :array 
+    {
+        $path = $this->get_post_file_path();
+        $post_content = file_get_contents($path);
+        $post_parts = $this->split_raw($post_content);
+        return $post_parts;
     }
 
     private function split_raw(string $raw_content) : array
@@ -54,8 +98,8 @@ class Recipe
         return preg_split('/\s+={3,}\s+/', $raw_content);
     }
 
-    private function get_post_file_path() : ?string
-     {
+    private function get_post_file_path(bool $folder_only = false) : ?string
+    {
 
 
         $all_posts =  $this->list_all_recipes();
@@ -73,6 +117,13 @@ class Recipe
             $index_in_allPost_list = array_search($this->file_name, $all_posts);
             $path = $all_posts[$index_in_allPost_list];
             
+            if($folder_only) {
+                $elements = explode("/", $path);
+                $folder_name = explode("_", $elements[0]);
+                $meal_value = $folder_name[1];
+                return $meal_value;
+            }
+
             return $_SERVER["DOCUMENT_ROOT"].'/recipes/'.$path.'.md';
     
         } else {
@@ -83,12 +134,10 @@ class Recipe
 
     public static function post_exist(string $slug) : bool
     {
-
         $slug_name = explode("/", $slug);
         $slug_name = array_pop($slug_name); // only post name, without "recipe"
         $all_posts =  self::list_all_recipes();
        
-
         $all_posts_names = array_map(function($value) {
             $elements = explode("/", $value); 
             $filename = $elements[1];
@@ -106,7 +155,6 @@ class Recipe
 
     public static function list_all_recipes(bool $folder_as_category = false) : array
     {
-
         $recipes_folder = $_SERVER["DOCUMENT_ROOT"].'/recipes/';
         $all_posts = glob($recipes_folder."*/*.md", GLOB_BRACE);
         $all_posts = array_map(function($value) use ($folder_as_category, $recipes_folder) {
@@ -121,7 +169,7 @@ class Recipe
         return $all_posts;
     }
     
-    private function get_taxonomy() : ?array
+    private function get_taxonomy() : ?array //TODO: is this still necessary?
     {
 
         $taxonomy = [ 'taxonomy' => [
@@ -166,7 +214,7 @@ class Recipe
 
     }
 
-    private function push_taxonomy(array $taxonomy_list, string $recipe_slug, string $taxonomies_array_key, array &$taxonomies_of_post) :void 
+    private function push_taxonomy(array $taxonomy_list, string $recipe_slug, string $taxonomies_array_key, array &$taxonomies_of_post) :void //TODO: is this still necessary?
     {
         foreach ($taxonomy_list as $taxonomy_element) {
             $posts = $taxonomy_element['posts'];

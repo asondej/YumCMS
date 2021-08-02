@@ -23,13 +23,14 @@ Remove remaining chicken; discard back and wings. Let cool slightly. Remove meat
 
 ### Step 4
 Stir in desired amount of chicken; reserve the rest for another use. Skim fat. Season with salt.
-
 ===
 # Diet
 vege        []
 pescovege   []
 with meat   [x]
+===
 # Tags: 
 classics, easy to make
+===
 # Type:
 soup, 

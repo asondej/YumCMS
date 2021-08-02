@@ -28,10 +28,10 @@ Stir in desired amount of chicken; reserve the rest for another use. Skim fat. S
 # Diet
 vege        []
 pescovege   []
-with meat   [x]
+with meat   []
 ===
 # Tags: 
-classics, easy to make
+classics, easy to makedf dfdfsd, fdgdsfgdf
 ===
 # Type:
 soup, 
