@@ -25,10 +25,11 @@ $yum = new Yum();
     - change paths accordingly ✔️
     - change namespaces (?)
 - make class for meta
-- read information about meal from folders not files
+- read information about meal from folders not files ✔️
 - write information about meal to file (?) - yes, that would be helpfull for showing meals page
-- read information about rest of the taxonomies from.md files, not taxaonomy jsons
+- read information about rest of the taxonomies from.md files, not taxaonomy jsons ✔️
 - write information abot rest of the taxonomies from md. files to json files (on every app execution?)
+- create method to get links for respective taxonomy pages
 
 ### ^^^ taxonomy class: create methods that scans folder (for meals) and recipe .md files (for other taxonomies) and make changes in respective taxonomy files
 

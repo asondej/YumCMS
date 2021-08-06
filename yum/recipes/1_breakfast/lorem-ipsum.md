@@ -20,7 +20,7 @@ pescovege   []
 with meat   [x]
 ===
 # Tags: 
-classics, easy to make
+classics, easy to make , cat, dog, ok ok
 ===
 # Type:
 soup, 

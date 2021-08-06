@@ -128,7 +128,7 @@ class Yum
             case 'recipe':
                 $recipe = new Recipe($this->slug);
                 $recipe = $recipe->getPost($this->slug);
-                //dump($recipe);
+                 dump($recipe);
                 $this->load_this_template($recipe);
                 break;
             case 'category_like':

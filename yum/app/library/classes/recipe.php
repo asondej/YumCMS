@@ -25,10 +25,12 @@ class Recipe
     {
     
         $path = $this->get_post_file_path();
-        //dump($path);
+        dump($path);
         
         $post_raw = file_get_contents($path); 
-        $post_raw = $this->split_raw($post_raw);    
+        $post_raw = $this->split_raw($post_raw);  
+        
+        //dump($post_raw);
 
         $post_meta = $post_raw[0];
         $post_content_raw = $post_raw[1];
@@ -42,8 +44,8 @@ class Recipe
             'taxonomy' => [
                 'meals' => $this->get_post_file_path(true),
                 'diets' => $this->get_post_diet(),
-                'types' => [],
-                'tags' => [],
+                'types' => $this->get_post_taglike_taxonomies('types'),
+                'tags' => $this->get_post_taglike_taxonomies('tags'),
             ],
             "content" => $this->parse_markdown($post_content_raw),
         ];
@@ -51,7 +53,7 @@ class Recipe
         $post = array_merge($this->get_taxonomy($this->slug), $post);
       
         //dump($this->get_post_diet());
-        dump($this->get_post_taglike_taxonomies());
+        dump($this->get_post_taglike_taxonomies('tags'));
      
         return $post;
 
@@ -74,15 +76,37 @@ class Recipe
 
     }
 
-    private function get_post_taglike_taxonomies() : array
+/*
+* string $type [post, category, product]
+*/
+    ## type values: 'tags' | 'types'
+    private function get_post_taglike_taxonomies(string $type) : array
     {
         $post_parts = $this->post_parts_array();
-        $tax = $post_parts[3];
-        $output_array = []; 
-       // preg_match_all('/([^,\n]+)/', $tax, $output_array); // two arrays
-       preg_match_all('/([^,\n]+)/',  $tax , $output_array,PREG_OFFSET_CAPTURE);
-        dump($output_array);
-        return [];
+        if( $type === 'tags') {
+            $index = 3;
+        } elseif ($type === 'types') {
+            $index = 4;
+        }
+        $tax = $post_parts[$index]; 
+        $tags_array = []; 
+       $tags_array = preg_grep('/([^,\n]+)/', explode("\n", $tax));
+       if(stripos($tags_array[0], 'tags') || stripos($tags_array[0], 'type')) {
+        $tags_array = explode(',', $tags_array[1]);
+       }
+
+       $tags_array = array_map(function($value) {
+           //dump($value);
+           $value = trim($value); 
+           return $value;
+       },$tags_array);
+
+       $tags_array = array_filter($tags_array);
+    //    $tags_array = array_filter($tags_array, function($value, $key) {
+    //     return $value != '';
+    //    }, ARRAY_FILTER_USE_BOTH);
+
+        return $tags_array;
     }
 
     private function post_parts_array() :array 
@@ -102,7 +126,7 @@ class Recipe
     {
 
 
-        $all_posts =  $this->list_all_recipes();
+        $all_posts =  $this->list_all_recipes(); 
         $all_posts_names = array_map(function($value) {
             
             $elements = explode("/", $value);
@@ -112,11 +136,13 @@ class Recipe
 
         }, $all_posts);
 
+        
 
-        if ( in_array( $this->file_name, $all_posts_names) ) {
-            $index_in_allPost_list = array_search($this->file_name, $all_posts);
+        if ( in_array( $this->file_name, $all_posts_names) ) { 
+            $index_in_allPost_list = array_search($this->file_name, $all_posts_names);
             $path = $all_posts[$index_in_allPost_list];
-            
+            // debug(data: $this->file_name);
+            // debug(data: $all_posts_names);
             if($folder_only) {
                 $elements = explode("/", $path);
                 $folder_name = explode("_", $elements[0]);
