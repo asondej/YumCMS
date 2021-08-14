@@ -2,36 +2,43 @@
     "breakfast": {
         "name": "Breakfast",
         "description": "",
-        "posts" : [
-            "lorem-ipsum", "ipsum-lorem"
+        "posts": [
+            "lorem-ipsum"
         ]
     },
     "lunch": {
         "name": "Lunch",
         "description": "",
-        "posts" : [
-            "lorem-ipsum", "ipsum-lorem"
-        ]
-    },
-    "dinner": {
-        "name": "Dinner",
-        "description": "",
-        "posts" : [
-            "lorem-ipsum", "ipsum-lorem", "basic-chicken-soup"
-        ]
-    },
-    "snack": {
-        "name": "Evening snack",
-        "description": "",
-        "posts" : [
-            "lorem-ipsum", "ipsum-lorem"
+        "posts": [
+            "nazwa ze spacjami"
         ]
     },
     "supper": {
-        "name": "Supper",
+        "name": "supper",
         "description": "",
-        "posts" : [
-            "lorem-ipsum", "ipsum-lorem"
+        "posts": []
+    },
+    "dessert": {
+        "name": "dessert",
+        "description": "",
+        "posts": [
+            "jeszcze jeden test",
+            "test-breakfast copy",
+            "test-breakfast"
+        ]
+    },
+    "dinner": {
+        "name": "dinner",
+        "description": "",
+        "posts": [
+            "basic-chicken-soup"
+        ]
+    },
+    "evening-snack": {
+        "name": "evening-snack",
+        "description": "",
+        "posts": [
+            "test-poswieczorka"
         ]
     }
 }

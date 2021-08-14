@@ -22,10 +22,6 @@ class Content {
     public static function is_post(string $slug): bool
     {
 
-       // dump($slug);
-        // debug(strpos($slug , "recipe/"));
-        // debug(Recipe::post_exist($slug));
- 
         if ( Recipe::post_exist($slug) && strpos($slug , "recipe/") == 0 ) { // the second cond will always be true, as slug is being set to "recipe/xxx" 
             // TODO: fix this, one day, someday, maybe... ;-)
             return true;

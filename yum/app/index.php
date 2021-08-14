@@ -23,10 +23,9 @@ $yum = new Yum();
 //TODO: 
 - move everything except recipes to "app" folder ✔️
     - change paths accordingly ✔️
-    - change namespaces (?)
 - make class for meta
 - read information about meal from folders not files ✔️
-- write information about meal to file (?) - yes, that would be helpfull for showing meals page
+- write information about meal to file (?) - yes, that would be helpfull for showing meals page ✔️
 - read information about rest of the taxonomies from.md files, not taxaonomy jsons ✔️
 - write information abot rest of the taxonomies from md. files to json files (on every app execution?)
 - create method to get links for respective taxonomy pages
@@ -40,12 +39,4 @@ use Library\Classes\Content;
 use Library\Classes\Recipe;
 
 
-
-
-//debug(Taxonomy::get_diets());
-
-
-
-
-// dump(filter_input(INPUT_GET, "request"), "filtrowanie");
 

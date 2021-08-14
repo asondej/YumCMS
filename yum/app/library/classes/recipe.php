@@ -25,7 +25,6 @@ class Recipe
     {
     
         $path = $this->get_post_file_path();
-        dump($path);
         
         $post_raw = file_get_contents($path); 
         $post_raw = $this->split_raw($post_raw);  
@@ -51,8 +50,7 @@ class Recipe
         ];
 
         $post = array_merge($this->get_taxonomy($this->slug), $post);
-      
-        //dump($this->get_post_diet());
+
         dump($this->get_post_taglike_taxonomies('tags'));
      
         return $post;
@@ -96,7 +94,7 @@ class Recipe
        }
 
        $tags_array = array_map(function($value) {
-           //dump($value);
+
            $value = trim($value); 
            return $value;
        },$tags_array);
@@ -109,7 +107,7 @@ class Recipe
         return $tags_array;
     }
 
-    private function post_parts_array() :array 
+    private function post_parts_array() : array 
     {
         $path = $this->get_post_file_path();
         $post_content = file_get_contents($path);
@@ -182,13 +180,15 @@ class Recipe
     public static function list_all_recipes(bool $folder_as_category = false) : array
     {
         $recipes_folder = $_SERVER["DOCUMENT_ROOT"].'/recipes/';
-        $all_posts = glob($recipes_folder."*/*.md", GLOB_BRACE);
+        $all_posts = glob($recipes_folder."*/*.md", GLOB_BRACE); 
+        
         $all_posts = array_map(function($value) use ($folder_as_category, $recipes_folder) {
             $value = str_replace($recipes_folder, "", $value);
             $value = str_replace(".md", "", $value);
+            //$value = str_replace(" ", "-", $value); // saces as dash
             if( $folder_as_category ) { // get rid of number prefix
-                $value = explode("_", $value);
-                $value = $value[1];
+                $value = explode("_", $value);//dump($value);
+                $value = end($value); 
             }
             return $value;
         }, $all_posts);

@@ -7,12 +7,3 @@ function template_path( string $template_name = 'default') : string
 }
 
 
-//function 
-
-
-// function  meal_get_link(string $name) : string
-// {
-//     return 'http://'.$_SERVER['SERVER_NAME']. '/meals/'.$name. '/';
-// }
-
-//dump(meal_get_link('breakfast'), 'tu jestesmy');

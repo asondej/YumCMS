@@ -1,0 +1,51 @@
+{
+    "breakfast": {
+        "name": "Breakfast",
+        "description": "",
+        "posts" : [
+            "lorem-ipsum", "ipsum-lorem"
+        ]
+    },
+    "lunch": {
+        "name": "Lunch",
+        "description": "",
+        "posts" : [
+            "lorem-ipsum", "ipsum-lorem"
+        ]
+    },
+    "dinner": {
+        "name": "Dinner",
+        "description": "this is dinner description",
+        "posts" : [
+            "lorem-ipsum", "ipsum-lorem", "basic-chicken-soup"
+        ]
+    },
+    "evening-snack": {
+        "name": "Evening snack",
+        "description": "",
+        "posts" : [
+            "lorem-ipsum", "ipsum-lorem"
+        ]
+    },
+    "supper": {
+        "name": "Supper",
+        "description": "",
+        "posts" : [
+            "lorem-ipsum", "ipsum-lorem"
+        ]
+},
+    "dessert": {
+        "name": "Dessert",
+        "description": "",
+        "posts" : [
+            "lorem-ipsum", "ipsum-lorem"
+        ]
+},
+    "nadmiar": {
+        "name": "Dessert",
+        "description": "",
+        "posts" : [
+            "lorem-ipsum", "ipsum-lorem"
+        ]
+    }
+}

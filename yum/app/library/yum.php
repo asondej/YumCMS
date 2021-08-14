@@ -11,17 +11,20 @@ class Yum
     protected string $slug;
     protected string $template_type;
     protected object $categories;//?
-
+    protected object $taxonomy;
 
     protected array $meals;
     protected array $diets;
     protected array $types;
     protected array $tags;
+   
 
-     protected string $template = "default";
+    protected string $template = "default";
 
     public function __construct()
     {
+
+        $this->taxonomy = new Taxonomy();
         $this->slug = $this->getSlug();
         $this->meals = Taxonomy::get_meals();
         $this->diets = Taxonomy::get_diets();
@@ -32,7 +35,7 @@ class Yum
         $this->set_template($this->slug);
         $this->build_template();
 
-
+       $this->taxonomy->update_meals_json();
 
         echo "<br>=====<br> slug: ". $this->slug;
         echo "<br>";
@@ -50,6 +53,7 @@ class Yum
             return "home";
         }
             $url_parts = explode("/", $query);
+            
 
             if( count($url_parts) > 2) { // if url contains more than 2 parts
                 return "404";
@@ -67,7 +71,7 @@ class Yum
             } elseif (count($url_parts) === 2 && $url_parts[0] === "recipe") { //recipes
                 return "recipe/".$url_parts[1];
             } elseif ( count($url_parts) === 2 ) { // if not recipe and not taxonony, then oopss...
-                //dump('tu jestesmy');
+
                 return "404";
             }
             else {
