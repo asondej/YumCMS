@@ -9,36 +9,31 @@
     "lunch": {
         "name": "Lunch",
         "description": "",
-        "posts": [
-            "nazwa ze spacjami"
-        ]
-    },
-    "supper": {
-        "name": "supper",
-        "description": "",
         "posts": []
     },
-    "dessert": {
-        "name": "dessert",
-        "description": "",
-        "posts": [
-            "jeszcze jeden test",
-            "test-breakfast copy",
-            "test-breakfast"
-        ]
-    },
     "dinner": {
-        "name": "dinner",
-        "description": "",
+        "name": "Dinner",
+        "description": "this is dinner description",
         "posts": [
             "basic-chicken-soup"
         ]
     },
     "evening-snack": {
-        "name": "evening-snack",
+        "name": "Evening snack",
+        "description": "",
+        "posts": []
+    },
+    "supper": {
+        "name": "Supper",
+        "description": "",
+        "posts": []
+    },
+    "dessert": {
+        "name": "Dessert",
         "description": "",
         "posts": [
-            "test-poswieczorka"
+            "test-breakfast copy",
+            "test-breakfast"
         ]
     }
 }

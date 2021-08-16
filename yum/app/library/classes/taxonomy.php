@@ -12,7 +12,12 @@ class Taxonomy {
     private static $tags  = "tag";
     private static $diets  = "diet";
     private $meals_cache_date;
-   
+    public $lastUpdate_meals;
+
+    public function __construct()
+    {
+        $this->lastUpdate_meals = filemtime(ABS_PATH. $this::$folder . $this::$meals);
+    }
 
     public function get_meals_and_recipes($includeEmpty = true) : array 
     {
@@ -57,12 +62,12 @@ class Taxonomy {
         return $recipesAssoc;
     }
 
-    public function update_meals_json( $cache = true ) : void 
+    public function update_meals_json( $cache = true, $cachtime = 30 * 60) : void 
     {
 
         # edit json content
         $meals_from_folders = $this->get_meals_and_recipes();
-        $meals_json = file_get_contents(ABS_PATH. $this::$folder . $this::$meals); //dump($meals_json);
+        $meals_json = file_get_contents(ABS_PATH. $this::$folder . $this::$meals); //debug($meals_json);
         $meals_json = json_decode($meals_json); 
 
         
@@ -109,8 +114,21 @@ class Taxonomy {
         # save edited json as file
 
         $updated_json_data = json_encode($meals_json, JSON_PRETTY_PRINT);
-        $handler = fopen( ABS_PATH. $this::$folder . $this::$meals, 'w+' );
-        fwrite( $handler, $updated_json_data);
+        $now = time();
+
+        if ($cache) {
+            if( ($now - $this->lastUpdate_meals) > $cachtime ) {
+                $handler = fopen( ABS_PATH. $this::$folder . $this::$meals, 'w+' );
+                fwrite( $handler, $updated_json_data);
+                fclose($handler);
+            }
+        } else {
+            $handler = fopen( ABS_PATH. $this::$folder . $this::$meals, 'w+' );
+            fwrite( $handler, $updated_json_data);
+            fclose($handler);
+        }
+
+
 
         //TODO: add cache to the code above
 

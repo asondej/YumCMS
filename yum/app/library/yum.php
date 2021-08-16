@@ -35,7 +35,7 @@ class Yum
         $this->set_template($this->slug);
         $this->build_template();
 
-       $this->taxonomy->update_meals_json();
+       $this->taxonomy->update_meals_json(true, 60*3);
 
         echo "<br>=====<br> slug: ". $this->slug;
         echo "<br>";
