@@ -34,8 +34,8 @@ class Yum
         // own methods
         $this->set_template($this->slug);
         $this->build_template();
-
-       $this->taxonomy->update_meals_json(true, 60*3);
+        // external methods
+        $this->taxonomy->update_meals_json();
 
         echo "<br>=====<br> slug: ". $this->slug;
         echo "<br>";
@@ -132,7 +132,7 @@ class Yum
             case 'recipe':
                 $recipe = new Recipe($this->slug);
                 $recipe = $recipe->getPost($this->slug);
-                 dump($recipe);
+                dump($recipe);
                 $this->load_this_template($recipe);
                 break;
             case 'category_like':

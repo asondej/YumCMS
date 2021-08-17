@@ -127,15 +127,6 @@ class Taxonomy {
             fwrite( $handler, $updated_json_data);
             fclose($handler);
         }
-
-
-
-        //TODO: add cache to the code above
-
-
-        // dump($meals_json, 'obiekt' );
-        // dump($meals_from_folders);
-
     }
 
     public static function get_meals() : array
