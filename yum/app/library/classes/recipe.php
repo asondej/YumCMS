@@ -27,9 +27,8 @@ class Recipe
         $path = $this->get_post_file_path();
         
         $post_raw = file_get_contents($path); 
-        $post_raw = $this->split_raw($post_raw);  
+        $post_raw = self::split_raw($post_raw);  
         
-        //dump($post_raw);
 
         $post_meta = $post_raw[0];
         $post_content_raw = $post_raw[1];
@@ -50,32 +49,29 @@ class Recipe
         ];
 
         $post = array_merge($this->get_taxonomy($this->slug), $post);
-
-        dump($this->get_post_taglike_taxonomies('tags'));
-     
+        
         return $post;
 
     }
 
     private function get_post_diet() : string
-    {
-        
+    {    
         $post_parts = $this->post_parts_array();
         $diet = $post_parts[2];
         //$pattern = '/(\b\w*\s*\w+\s+\w*\b)\s*(\[.*x.*\])/';
         $pattern = '/(\b\w*\s*\w+\b)\s*(\[.*x.*\])/';
         $matches = '';
         if(stripos($diet, "diet") ) {
-
             preg_match($pattern, $diet, $matches);
             $diet = $matches[1] ?? '';
+            $diet = str_ireplace('diet', '', $diet);
             return $diet;
         }
 
     }
 
 /*
-* string $type [post, category, product]
+* string $type ["tags", "types"]
 */
     ## type values: 'tags' | 'types'
     private function get_post_taglike_taxonomies(string $type) : array
@@ -87,22 +83,19 @@ class Recipe
             $index = 4;
         }
         $tax = $post_parts[$index]; 
+
         $tags_array = []; 
        $tags_array = preg_grep('/([^,\n]+)/', explode("\n", $tax));
        if(stripos($tags_array[0], 'tags') || stripos($tags_array[0], 'type')) {
-        $tags_array = explode(',', $tags_array[1]);
+        $tags_array = explode(',', end($tags_array));
        }
 
        $tags_array = array_map(function($value) {
-
            $value = trim($value); 
            return $value;
        },$tags_array);
 
        $tags_array = array_filter($tags_array);
-    //    $tags_array = array_filter($tags_array, function($value, $key) {
-    //     return $value != '';
-    //    }, ARRAY_FILTER_USE_BOTH);
 
         return $tags_array;
     }
@@ -111,18 +104,17 @@ class Recipe
     {
         $path = $this->get_post_file_path();
         $post_content = file_get_contents($path);
-        $post_parts = $this->split_raw($post_content);
+        $post_parts = self::split_raw($post_content);
         return $post_parts;
     }
 
-    private function split_raw(string $raw_content) : array
+    public static function split_raw(string $raw_content) : array
     {
         return preg_split('/\s+={3,}\s+/', $raw_content);
     }
 
     private function get_post_file_path(bool $folder_only = false) : ?string
     {
-
 
         $all_posts =  $this->list_all_recipes(); 
         $all_posts_names = array_map(function($value) {
@@ -134,7 +126,6 @@ class Recipe
 
         }, $all_posts);
 
-        
 
         if ( in_array( $this->file_name, $all_posts_names) ) { 
             $index_in_allPost_list = array_search($this->file_name, $all_posts_names);
@@ -177,11 +168,15 @@ class Recipe
         }
     }
 
-    public static function list_all_recipes(bool $folder_as_category = false) : array
+    public static function list_all_recipes(bool $folder_as_category = false, bool $full_path = false) : array
     {
         $recipes_folder = $_SERVER["DOCUMENT_ROOT"].'/recipes/';
         $all_posts = glob($recipes_folder."*/*.md", GLOB_BRACE); 
-        
+
+        if($full_path) {
+            return $all_posts;
+        }
+
         $all_posts = array_map(function($value) use ($folder_as_category, $recipes_folder) {
             $value = str_replace($recipes_folder, "", $value);
             $value = str_replace(".md", "", $value);
@@ -260,7 +255,6 @@ class Recipe
             'allow_unsafe_links' => false,
         ]);
 
-        //dump($converter->convertToHtml($raw_content)->getContent());
 
         return $converter->convertToHtml($raw_content)->getContent();
     }

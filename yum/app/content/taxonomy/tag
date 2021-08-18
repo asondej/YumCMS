@@ -1,16 +1,152 @@
 {
-    "low-gi": {
-        "name": "Low GI",
-        "description": "no desription here",
-        "posts" : [
-            "lorem-ipsum", "ipsum-lorem"
-        ]
-    }
-    "gluten=-free": {
-        "name": "Gluten free",
+    "gluten-free": {
+        "name": "gluten-free",
         "description": "",
-        "posts" : [
-            "lorem-ipsum", "ipsum-lorem"
+        "posts": [
+            "gluten-free-blueberry-muffins"
+        ]
+    },
+    "fast": {
+        "name": "fast",
+        "description": "",
+        "posts": [
+            "peanut-butter-pie"
+        ]
+    },
+    "shrimps": {
+        "name": "shrimps",
+        "description": "",
+        "posts": [
+            "recipe-steamed-prawns-in-garlic-sauce"
+        ]
+    },
+    "classics": {
+        "name": "classics",
+        "description": "",
+        "posts": [
+            "basic-chicken-soup"
+        ]
+    },
+    "ramen": {
+        "name": "ramen",
+        "description": "",
+        "posts": [
+            "chicken-sweetcorn-ramen"
+        ]
+    },
+    "salmon": {
+        "name": "salmon",
+        "description": "",
+        "posts": [
+            "basic-chicken-soup"
+        ]
+    },
+    "quinoa": {
+        "name": "quinoa",
+        "description": "",
+        "posts": [
+            "quinoa-salad-grilled-halloumi"
+        ]
+    },
+    "vegetables": {
+        "name": "vegetables",
+        "description": "",
+        "posts": [
+            "steamed-asparagus-with-potato-and-leek-sauce"
+        ]
+    },
+    "with-fruits": {
+        "name": "with fruits",
+        "description": "",
+        "posts": [
+            "gluten-free-blueberry-muffins"
+        ]
+    },
+    "with-peanuts": {
+        "name": "with peanuts",
+        "description": "",
+        "posts": [
+            "peanut-butter-pie"
+        ]
+    },
+    "low-gi": {
+        "name": "low GI",
+        "description": "",
+        "posts": [
+            "peanut-butter-pie",
+            "recipe-steamed-prawns-in-garlic-sauce"
+        ]
+    },
+    "with-eggs": {
+        "name": "with eggs",
+        "description": "",
+        "posts": [
+            "avocado-tomatillo-breakfast-tacos"
+        ]
+    },
+    "with-avocado": {
+        "name": "with avocado",
+        "description": "",
+        "posts": [
+            "avocado-tomatillo-breakfast-tacos"
+        ]
+    },
+    "with-broccoli": {
+        "name": "with broccoli",
+        "description": "",
+        "posts": [
+            "broccoli-salad"
+        ]
+    },
+    "with-garlic": {
+        "name": "with garlic",
+        "description": "",
+        "posts": [
+            "recipe-steamed-prawns-in-garlic-sauce"
+        ]
+    },
+    "with-vegetables": {
+        "name": "with vegetables",
+        "description": "",
+        "posts": [
+            "kale-spinach-and-pear-smoothie",
+            "mexican-bean-soup-crispy-feta-tortillas"
+        ]
+    },
+    "with-feta": {
+        "name": "with feta",
+        "description": "",
+        "posts": [
+            "mexican-bean-soup-crispy-feta-tortillas",
+            "stuffed-red-peppers"
+        ]
+    },
+    "easy-to-make": {
+        "name": "easy to make",
+        "description": "",
+        "posts": [
+            "basic-chicken-soup"
+        ]
+    },
+    "with-fish": {
+        "name": "with fish",
+        "description": "",
+        "posts": [
+            "simple-fish-stew"
+        ]
+    },
+    "halloumi-cheese": {
+        "name": "halloumi cheese",
+        "description": "",
+        "posts": [
+            "quinoa-salad-grilled-halloumi"
+        ]
+    },
+    "with-asparagus": {
+        "name": "with asparagus",
+        "description": "",
+        "posts": [
+            "steamed-asparagus-with-potato-and-leek-sauce"
         ]
     }
 }

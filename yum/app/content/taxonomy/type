@@ -1,0 +1,85 @@
+{
+    "pie": {
+        "name": "pie",
+        "description": "",
+        "posts": [
+            "peanut-butter-pie"
+        ]
+    },
+    "baked": {
+        "name": "baked",
+        "description": "",
+        "posts": [
+            "peanut-butter-pie",
+            "stuffed-red-peppers"
+        ]
+    },
+    "tacos": {
+        "name": "tacos",
+        "description": "",
+        "posts": [
+            "avocado-tomatillo-breakfast-tacos"
+        ]
+    },
+    "salad": {
+        "name": "salad",
+        "description": "",
+        "posts": [
+            "broccoli-salad",
+            "basic-chicken-soup",
+            "quinoa-salad-grilled-halloumi"
+        ]
+    },
+    "easy": {
+        "name": "easy",
+        "description": "",
+        "posts": [
+            "broccoli-salad"
+        ]
+    },
+    "steamed": {
+        "name": "steamed",
+        "description": "",
+        "posts": [
+            "recipe-steamed-prawns-in-garlic-sauce",
+            "steamed-asparagus-with-potato-and-leek-sauce"
+        ]
+    },
+    "smoothie": {
+        "name": "smoothie",
+        "description": "",
+        "posts": [
+            "kale-spinach-and-pear-smoothie"
+        ]
+    },
+    "soup": {
+        "name": "soup",
+        "description": "",
+        "posts": [
+            "mexican-bean-soup-crispy-feta-tortillas",
+            "basic-chicken-soup",
+            "chicken-sweetcorn-ramen"
+        ]
+    },
+    "stew": {
+        "name": "stew",
+        "description": "",
+        "posts": [
+            "simple-fish-stew"
+        ]
+    },
+    "grilled": {
+        "name": "grilled",
+        "description": "",
+        "posts": [
+            "quinoa-salad-grilled-halloumi"
+        ]
+    },
+    "muffin-bakes": {
+        "name": "muffin bakes",
+        "description": "",
+        "posts": [
+            "gluten-free-blueberry-muffins"
+        ]
+    }
+}

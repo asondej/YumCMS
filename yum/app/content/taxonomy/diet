@@ -1,23 +1,34 @@
 {
     "vege": {
         "name": "vege",
-        "description": "",
-        "posts" : [
-            "lorem-ipsum", "ipsum-lorem"
+        "description": "Meals without meat",
+        "posts": [
+            "gluten-free-blueberry-muffins",
+            "peanut-butter-pie",
+            "avocado-tomatillo-breakfast-tacos",
+            "broccoli-salad",
+            "kale-spinach-and-pear-smoothie",
+            "mexican-bean-soup-crispy-feta-tortillas",
+            "steamed-asparagus-with-potato-and-leek-sauce"
         ]
     },
     "with-meat": {
         "name": "With meat",
-        "description": "",
-        "posts" : [
-            "lorem-ipsum", "ipsum-lorem", "basic-chicken-soup"
+        "description": "Non-vegetarian meals",
+        "posts": [
+            "basic-chicken-soup",
+            "chicken-sweetcorn-ramen"
         ]
     },
     "pescovege": {
         "name": "Pescovege",
-        "description": "",
-        "posts" : [
-            "lorem-ipsum", "ipsum-lorem"
+        "description": "Meals with fishes",
+        "posts": [
+            "recipe-steamed-prawns-in-garlic-sauce",
+            "simple-fish-stew",
+            "basic-chicken-soup",
+            "quinoa-salad-grilled-halloumi",
+            "stuffed-red-peppers"
         ]
     }
 }

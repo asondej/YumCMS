@@ -1,39 +1,52 @@
 {
     "breakfast": {
-        "name": "Breakfast",
+        "name": "breakfast",
         "description": "",
         "posts": [
-            "lorem-ipsum"
+            "avocado-tomatillo-breakfast-tacos",
+            "broccoli-salad",
+            "recipe-steamed-prawns-in-garlic-sauce"
         ]
     },
     "lunch": {
-        "name": "Lunch",
+        "name": "lunch",
         "description": "",
-        "posts": []
-    },
-    "dinner": {
-        "name": "Dinner",
-        "description": "this is dinner description",
         "posts": [
-            "basic-chicken-soup"
+            "kale-spinach-and-pear-smoothie",
+            "mexican-bean-soup-crispy-feta-tortillas"
         ]
     },
     "evening-snack": {
-        "name": "Evening snack",
-        "description": "",
-        "posts": []
-    },
-    "supper": {
-        "name": "Supper",
-        "description": "",
-        "posts": []
-    },
-    "dessert": {
-        "name": "Dessert",
+        "name": "evening-snack",
         "description": "",
         "posts": [
-            "test-breakfast copy",
-            "test-breakfast"
+            "basic-chicken-soup",
+            "quinoa-salad-grilled-halloumi"
+        ]
+    },
+    "supper": {
+        "name": "supper",
+        "description": "",
+        "posts": [
+            "steamed-asparagus-with-potato-and-leek-sauce",
+            "stuffed-red-peppers"
+        ]
+    },
+    "dessert": {
+        "name": "dessert",
+        "description": "",
+        "posts": [
+            "gluten-free-blueberry-muffins",
+            "peanut-butter-pie"
+        ]
+    },
+    "dinner": {
+        "name": "dinner",
+        "description": "",
+        "posts": [
+            "basic-chicken-soup",
+            "chicken-sweetcorn-ramen",
+            "simple-fish-stew"
         ]
     }
 }

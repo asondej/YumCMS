@@ -16,7 +16,7 @@ require_once(__DIR__ . '/library/helpers.php');
 
 
 use Library\Yum;
-$yum = new Yum();
+$yum = new Yum(true);
 //$yum->build_template();
 
 /*
@@ -27,17 +27,18 @@ $yum = new Yum();
 - read information about meal from folders not files ✔️
 - write information about meal to file (?) - yes, that would be helpfull for showing meals page ✔️
 - read information about rest of the taxonomies from.md files, not taxaonomy jsons ✔️
-- write information abot rest of the taxonomies from md. files to json files (on every app execution? - with every taxonomy display, otherwise with cache)
-- create method to get links for respective taxonomy pages
-- crate helper functions for displaying types and tags in template
+- write information abot rest of the taxonomies from md. files to json files (on every app execution? - with every taxonomy display, otherwise with cache) ✔️
+- taxonomy class: create methods that scans folder (for meals) and recipe .md files (for other taxonomies) and make changes in respective taxonomy files ✔️
 
-### ^^^ taxonomy class: create methods that scans folder (for meals) and recipe .md files (for other taxonomies) and make changes in respective taxonomy files
+- create meals page
+- create method to get links for respective taxonomy pages
+- create helper functions for displaying types and tags in template
+- add printing option to recipe page
+
+
 
 */
 
-use Library\Classes\Taxonomy;
-use Library\Classes\Content;
-use Library\Classes\Recipe;
 
 
 

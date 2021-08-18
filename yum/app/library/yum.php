@@ -21,7 +21,7 @@ class Yum
 
     protected string $template = "default";
 
-    public function __construct()
+    public function __construct($show_debug_details = false)
     {
 
         $this->taxonomy = new Taxonomy();
@@ -36,10 +36,16 @@ class Yum
         $this->build_template();
         // external methods
         $this->taxonomy->update_meals_json();
-
-        echo "<br>=====<br> slug: ". $this->slug;
-        echo "<br>";
-        echo "template type: ".$this->template_type;
+        $this->taxonomy->update_taxonomy_json('diets');
+        $this->taxonomy->update_taxonomy_json('types');
+        $this->taxonomy->update_taxonomy_json('tags');
+        
+        if($show_debug_details) {
+            echo "<br>=====<br> slug: ". $this->slug;
+            echo "<br>";
+            echo "template type: ".$this->template_type;
+        }
+        
 
     }
 
