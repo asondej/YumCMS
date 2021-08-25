@@ -6,7 +6,7 @@
 <nav class="navbar main-nav border-less fixed-top navbar-expand-lg p-0">
   <div class="container-fluid p-0">
       <!-- logo -->
-      <a class="navbar-brand" href="<?php echo ABS_PATH; ?>" id="logo">
+      <a class="navbar-brand" href="<?php echo homepage_url() ?>" id="logo">
         <img src="<?php echo template_path(); ?>images/yum-logo.svg" alt="logo">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,12 +21,7 @@
           </a>
           <!-- Dropdown list -->
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="index.html">Breakfast</a>
-            <a class="dropdown-item" href="homepage-two.html">Lunch</a>
-            <a class="dropdown-item" href="index.html">Dinner</a>
-            <a class="dropdown-item" href="homepage-two.html">Evening snack</a>
-            <a class="dropdown-item" href="index.html">Supper</a>
-            <a class="dropdown-item" href="homepage-two.html">Dessert</a>
+            <?php echo generate_tax_menu('meals'); ?>
           </div>
         </li>
 
@@ -36,9 +31,10 @@
           </a>
           <!-- Dropdown list -->
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="index.html">Vege</a>
+            <!-- <a class="dropdown-item" href="index.html">Vege</a>
             <a class="dropdown-item" href="homepage-two.html">Pescovege</a>
-            <a class="dropdown-item" href="index.html">Meat</a>
+            <a class="dropdown-item" href="index.html">Meat</a> -->
+            <?php echo generate_tax_menu('diets'); ?>
           </div>
         </li>
 		
@@ -48,17 +44,12 @@
           </a>
           <!-- Dropdown list -->
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="index.html">eintopf</a>
-            <a class="dropdown-item" href="homepage-two.html">soup</a>
-            <a class="dropdown-item" href="index.html">pasta</a>
-            <a class="dropdown-item" href="index.html">lorem</a>
-            <a class="dropdown-item" href="homepage-two.html">ipsum</a>
-            <a class="dropdown-item" href="index.html">dolor</a>
+           <?php echo generate_tax_menu('types'); ?>
           </div>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="speakers.html">Tags
+          <a class="nav-link" href="<?php echo tax_list_url('tags'); ?>">Tags
           </a>
         </li>
       </ul>

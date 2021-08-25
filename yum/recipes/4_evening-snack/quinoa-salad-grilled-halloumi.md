@@ -1,11 +1,11 @@
 {
-    "title" : "uinoa salad with grilled halloumi",
+    "title" : "Quinoa salad with grilled halloumi",
     "image" : "http://www.fillmurray.com/200/300"
 }
 ===
 
 - 3 tbsp extra-virgin olive oil
-- - 1 small red onion , sliced
+- 1 small red onion , sliced
 - 1 large roasted pepper from a jar, thickly sliced, or a handful of ready-roasted sliced peppers
 - 200g quinoa
 - 500ml vegetable stock

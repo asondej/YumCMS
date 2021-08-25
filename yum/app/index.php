@@ -31,11 +31,16 @@ $yum = new Yum(true);
 - taxonomy class: create methods that scans folder (for meals) and recipe .md files (for other taxonomies) and make changes in respective taxonomy files ✔️
 
 - create meals page
-- create method to get links for respective taxonomy pages
+- create method to get links for respective taxonomy pages ✔️
+- method for listing all recipes ✔️
+- method for listing recipes in specific category ✔️
+-  method generating links to recipes 
 - create helper functions for displaying types and tags in template
 - add printing option to recipe page
 
 
+-> druga się na niej opiera, przejezdza sie po zadanej taksonomii i generuje linki dla wszystkich wartosci, obudowane dowolnym htmlem(?)
+-> wtedy od razu wykorzystam te druga do generowania menu (na razie nie bedzie zadnej klasy do zarzadzania menu)
 
 */
 

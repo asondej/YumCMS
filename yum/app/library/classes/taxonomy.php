@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace Library\Classes;
 
-use WeakMap;
-
 class Taxonomy {
 
     private static $folder  = '/content/taxonomy/';
@@ -12,6 +10,7 @@ class Taxonomy {
     private static $types   = "type";
     private static $tags    = "tag";
     private static $diets   = "diet";
+    protected $slug;
     public $lastUpdate_meals;
     public $lastUpdate_diet;
     public $lastUpdate_types;
@@ -19,14 +18,16 @@ class Taxonomy {
     public static $diet_pattern = '/(\b\w*\s*\w+\b)\s*(\[.*x.*\])/';
     public static $taglike_pattern = '/([^,\n]+)/';
 
-    public function __construct()
+
+
+    public function __construct( ?string $slug =  null)
     {
         $this->lastUpdate_meals = filemtime(ABS_PATH. $this::$folder . $this::$meals);
         $this->lastUpdate_diet  = filemtime(ABS_PATH. $this::$folder . $this::$diets);
         $this->lastUpdate_tags  = filemtime(ABS_PATH. $this::$folder . $this::$tags);
         $this->lastUpdate_types = filemtime(ABS_PATH. $this::$folder . $this::$types);
+        $this->slug = $slug;
 
-        //dump(date('H:i', $this->lastUpdate_types));
     }
 
     public function get_meals_and_recipes(bool $includeEmpty = true) : array 
@@ -134,7 +135,6 @@ class Taxonomy {
         }
     }
 
-
 /*
 * string $taxonomy ['tags', 'types', 'diets']
 */
@@ -199,7 +199,7 @@ class Taxonomy {
                 foreach ($shortage as $new_tax_value=>$new_details) {
 
                     $taxonomy_json->{$new_tax_value} = (object) [
-                        'name' => $taxonomy_slug_name_array[$new_tax_value],
+                        'name' => ucfirst( $taxonomy_slug_name_array[$new_tax_value]),
                         'description' => '',
                         'posts' => []
                     ];
@@ -232,18 +232,7 @@ class Taxonomy {
             fclose($handler);
         }
 
-
-        //   1. przeskanuj sie po przepisach i stworz tablice wg wybranej taksonomi ✔️
-        //   2. sczytaj i zdekoduj jsona z diatmi ✔️
-        //   2. porownaj te dane ✔️
-        //   3. uaktualniaj liste przepisow  ✔️
-        //   4. jesli taksonomia istnieje w przepisie a nie istnieje a jsonie - dodaj do jsona ✔️
-        //   5. jesli taksonomia istnieje w jsonie ale nie istnieje w przepisch, zostaw ja pusta (zeby zachowac opis). ✔️
-        //TODO: // 6. jeśli cos jest nadmiarowe w jsonie i nie ma opisu, to wywal, ✔️
-
-          # save edited json as file with ans withouth cache
     }
-
 
     public static function recipes_with_taxonomies_array() : array
     {
@@ -254,14 +243,18 @@ class Taxonomy {
 
             $raw_content = file_get_contents($recipe);
             $content_parts = Recipe::split_raw($raw_content); 
+            $meta = json_decode($content_parts[0], true);
             array_push($all,[
                 "recipe" => $recipe,
+                "title" => $meta['title'],
+                "image" => $meta['image'],
                 "diet" => $content_parts[2],
                 "tags" => $content_parts[3],
                 "types" => $content_parts[4],
             ]);
-           // debug($content_parts);
+
         }
+
     
         foreach ($all as &$recipe_tax_details) {
 
@@ -281,12 +274,12 @@ class Taxonomy {
             }
             if(stripos($types, "type") ) { // get types from raw
 
-                
                 $types_array = self::taglike_from_raw($types);
                 $recipe_tax_details['types'] = $types_array;
             }
 
         }
+        
         return $all;
     }
 
@@ -318,7 +311,9 @@ class Taxonomy {
                 $tax_values = $recipe_details[$taxonomy];
 
                 foreach ($tax_values as $tax_value) {
+                    
                     if(array_key_exists($tax_value, $all_tax_values ) ) {
+                        //$value = ucfirst($tax_value);
                         array_push($all_tax_values[$tax_value], $recipe );
                     } else {
                         $all_tax_values[$tax_value] = [$recipe];
@@ -327,6 +322,7 @@ class Taxonomy {
 
             }
         }
+
 
             if($slug_only) {
                 foreach ($all_tax_values as $tax_name=>&$recipes) { // get rid of filepath
@@ -347,11 +343,13 @@ class Taxonomy {
                     }
                 }
             }
+        
+            
 
         return  $all_tax_values;
     }
 
-    private static function taglike_from_raw(string $raw) : array {
+    protected static function taglike_from_raw(string $raw) : array {
         $tags_array = preg_grep(self::$taglike_pattern, explode("\n", $raw));
 
         $tags_array = array_map(function($value){
@@ -430,5 +428,194 @@ class Taxonomy {
         return $taxonomy_name; 
     }
 
+/*
+* string $taxonomy ['tag/s', 'type/s', 'diet/s', 'meal/s']
+*/
+    protected static function tax_url_from_slug(string $slug, string $taxonomy) : string
+    {
+        $tax = match ($taxonomy) {
+            'tags', 'tag' => 'tag',
+            'types', 'type' => 'type',
+            'diets', 'diet' => 'diet',
+            'meals', 'meal' => 'meal',
+        };
+
+        $url = 'http://'.$_SERVER['SERVER_NAME'].'/'.$tax.'/'.$slug.'/';
+        return $url;
+    }
+
+/*
+* string $taxonomy ['tags', 'types', 'diets', 'meals']
+*/
+    public static function tax_list_url(string $taxonomy) : string
+    {
+        return 'http://'.$_SERVER['SERVER_NAME'].'/'.$taxonomy;
+    }
+
+/*
+* string $taxonomy ['tags', 'types', 'diets', 'meals']
+*/
+    public static function taxonomy_generate_links(string $taxonomy, ?string $class = null, array $conf = ['uppercase' => false], array $html_open_close = ['<a href="%s" class="%s" >','</a>'],  ) : string 
+    {
+
+        if(empty($class)) {
+            $class = 'tax_'.$taxonomy.'_allLinks';
+        }
+        $taxonomy_file_path = match ($taxonomy) {
+            'tags' => ABS_PATH. self::$folder . self::$tags,
+            'types' => ABS_PATH. self::$folder . self::$types,
+            'diets' => ABS_PATH. self::$folder . self::$diets,
+            'meals' => ABS_PATH. self::$folder . self::$meals,
+        };
+
+
+        $taxonomy_json = file_get_contents($taxonomy_file_path);
+        $taxonomy_json = json_decode($taxonomy_json); 
+
+        $html ='';
+        foreach ($taxonomy_json as $tax_name=>$tax_details)  {
+            if($conf['uppercase']) {
+                $name = ucfirst($tax_details->name);
+            } else {
+                $name = $tax_details->name;
+            }
+            $url = self::tax_url_from_slug($tax_name, $taxonomy);
+            $html.= sprintf($html_open_close[0], $url, $class ).$name.$html_open_close[1];
+        }
+
+        //$html = htmlspecialchars($html);
+
+        return $html;
+    }
+
+
+    public function taxonomyPage_single() : array // page details
+    {
+
+        $parts = [];
+        preg_match('/-(.+)+$/', $this->slug, $parts);
+        $tax_type = [];
+        preg_match('/^(\w+)-/', $this->slug, $tax_type);
+        $taxonomy_name = end($tax_type);
+        $taxonomy_value = end($parts);
+        $taxonomy_value = str_replace('-', ' ', $taxonomy_value);
+        //dump($taxonomy_value);
+
+        $posts_in = self::list_recipes_in_taxonomy($this->slug);
+
+        $page = [
+            'tax_name' => $taxonomy_name,
+            'tax_value' => $taxonomy_value,
+            'meta' => [
+                'title' => ucfirst($taxonomy_name). ': ' .$taxonomy_value
+            ], 
+            'posts'=> $posts_in,
+        ];
+        return $page;
+    }
+
+    public function taxonomyPage_list($slug) : array // page details
+    {
+        $page = [
+
+            'meta' => [
+                'title' =>ucfirst($slug),
+            ],
+            'values' => self::list_taxonomy($slug),
+        ];
+
+        //dump($page);
+        return $page;
+    }
+
+
+    public static function list_taxonomy(?string $slug = null) : ?array 
+    {
+
+        if ($slug === null) {
+            $query = filter_input(INPUT_GET, "request");
+        } else {
+            $query = $slug;
+        }
+        
+        $taxonomies = ['tags', 'meals', 'types', 'diets'];
+
+        $values = [];
+
+        if ( in_array($query, $taxonomies) ) {
+
+            $values_from_json = match ($query) {
+                'tags' => self::get_tags(),
+                'types' => self::get_types(),
+                'diets' => self::get_diets(),
+                'meals' => self::get_meals(),
+            };
+
+            foreach($values_from_json as $slug=>$details) {
+                $url = self::tax_url_from_slug($slug, $query);
+                $values[ucwords($details['name'])] = $url;
+            }
+
+            return $values;
+
+        } else {
+            return null;
+        }
+    
+    }
+
+
+    public static function list_recipes_in_taxonomy(?string $slug = null) : ?array 
+    {
+        
+        if ($slug === null) {
+            $slug = filter_input(INPUT_GET, "request");
+            if($slug===null) {
+                $slug = 'home';
+            }
+            $slug = preg_replace('/\//', '-', $slug, 1);
+            $slug = preg_replace('/\//', '', $slug, 1);
+            
+        } 
+        
+        $info = Content::tax_info_from_slug($slug);
+
+        $taxonomies = ['tag', 'meal', 'type', 'diet'];
+
+        $values = [];
+
+
+        if ( in_array($info['tax_type'], $taxonomies) ) {
+
+            $values_from_json = match ($info['tax_type']) {
+                'tag' => self::get_tags(),
+                'type' => self::get_types(),
+                'diet' => self::get_diets(),
+                'meal' => self::get_meals(),
+            };
+            
+            $post_with_tax_value = $values_from_json[ $info['slug'] ]['posts'];
+            $recipes = self::recipes_with_taxonomies_array();
+
+            foreach ($post_with_tax_value as $post) {
+                
+                foreach ($recipes as $details) {
+
+                    $path = $details['recipe'];
+                    $title = $details['title'];
+
+                    if ( str_contains($path, $post) ) {
+                        $values[$post] = $title;
+                    }
+                    
+                }
+              
+            }
+            return $values;
+
+        } else {
+            return null;
+        }
+    }
 
 }

@@ -9,7 +9,6 @@ class Content {
     {
         return sprintf('%s/content/%s/%s', ABS_PATH, $content_type, $slug);
     }
-
     public static function is_page( string $slug ): bool
     {
        $path = self::get_content_path("page", $slug );
@@ -31,27 +30,49 @@ class Content {
     }
     public static function is_taxonomy(string $slug): bool|int
     {
+
+        $taxonomies = ['diet', 'diets', 'meal', 'meals', 'tag', 'tags', 'type', 'types'];
+        
         $parts = explode("-", $slug);
-        if( count($parts)===2 ) { // it is taxonomy
+        $contains = array_intersect($taxonomies, $parts);
+        
+        if( count($parts)>=2 && !empty($contains) ) { // it is taxonomy
             return true;
         } else {
             return false;
         }
     }
-    public static function is_meal(string $slug) : bool
-    {
+
+    public static function tax_info_from_slug($slug) : array {
+        $parts = [];
+        preg_match('/-(.+)+$/', $slug, $parts);
+        $tax_type = [];
+        preg_match('/^(\w+)-/', $slug, $tax_type);
+        $tax_type = end($tax_type);
+        $slug = end($parts);
+
+        return [
+            'tax_type'  => $tax_type,
+            'slug'      => $slug,
+        ];
+    }
+/*
+* string $type ['tag', 'type', 'meal', 'diet']
+*/  
+    public static function is_tax_type( string $type, string $slug) : bool {
 
         if ( self::is_taxonomy($slug) ) { // check if it's taxonomy
 
-            $parts = explode("-", $slug);
-            $tax_type = $parts[0];
-            $slug = array_pop($parts);
-            
+            $info = self::tax_info_from_slug($slug);
 
-            $json_meals = array_keys(Taxonomy::get_meals()); // get list of eexisting meals in json
+            $json_tax = match ($type) {
+                'tag' => array_keys(Taxonomy::get_tags()), 
+                'type'=> array_keys(Taxonomy::get_types()), 
+                'meal'=> array_keys(Taxonomy::get_meals()), 
+                'diet'=> array_keys(Taxonomy::get_diets()), 
+            };
 
-
-            if ( in_array($slug, $json_meals) && $tax_type == "meal") { // check if it's existing taxonomy from json with mels
+            if ( in_array($info['slug'], $json_tax) && $info['tax_type'] == $type) { // check if it's existing taxonomy from json 
                 return true;
             } else { // it's not in json, so...
                 return false;
@@ -62,75 +83,114 @@ class Content {
         }
 
     }
-    public static function is_tag(string $slug) : bool
+
+    // public static function is_meal(string $slug) : bool
+    // {
+
+    //     if ( self::is_taxonomy($slug) ) { // check if it's taxonomy
+
+    //         $info = self::tax_info_from_slug($slug);
+            
+    //         $json_tax = array_keys(Taxonomy::get_meals()); // get list of existing meals in json
+
+    //         if ( in_array($info['slug'], $json_tax) && $info['tax_type'] == "meal") { // check if it's existing taxonomy from json with mels
+    //             return true;
+    //         } else { // it's not in json, so...
+    //             return false;
+    //         }
+
+    //     } else { // it's not a taxonomy, so...
+    //         return false;
+    //     }
+
+    // }
+    // public static function is_tag(string $slug) : bool
+    // {
+    //     if ( self::is_taxonomy($slug) ) { // check if it's taxonomy
+
+    //         $info = self::tax_info_from_slug($slug);
+            
+    //         $json_tax = array_keys(Taxonomy::get_tags()); // get list of existing meals in json
+
+    //         if ( in_array($info['slug'], $json_tax) && $info['tax_type'] == "tag") { // check if it's existing taxonomy from json with mels
+    //             return true;
+    //         } else { // it's not in json, so...
+    //             return false;
+    //         }
+
+    //     } else { // it's not a taxonomy, so...
+    //         return false;
+    //     }
+
+    // }
+    // public static function is_diet(string $slug) : bool
+    // {
+    //     if ( self::is_taxonomy($slug) ) { // check if it's taxonomy
+
+    //         $info = self::tax_info_from_slug($slug);
+            
+    //         $json_tax = array_keys(Taxonomy::get_diets()); // get list of existing meals in json
+
+    //         if ( in_array($info['slug'], $json_tax) && $info['tax_type'] == "diet") { // check if it's existing taxonomy from json with mels
+    //             return true;
+    //         } else { // it's not in json, so...
+    //             return false;
+    //         }
+
+    //     } else { // it's not a taxonomy, so...
+    //         return false;
+    //     }
+
+    // }
+    // public static function is_type(string $slug) : bool
+    // {
+    
+
+    //     if ( self::is_taxonomy($slug) ) { // check if it's taxonomy
+
+    //         $info = self::tax_info_from_slug($slug);
+            
+    //         $json_tax = array_keys(Taxonomy::get_types()); // get list of existing meals in json
+
+    //         if ( in_array($info['slug'], $json_tax) && $info['tax_type'] == "type") { // check if it's existing taxonomy from json with mels
+    //             return true;
+    //         } else { // it's not in json, so...
+    //             return false;
+    //         }
+
+    //     } else { // it's not a taxonomy, so...
+    //         return false;
+    //     }
+
+
+    // }
+ 
+/*
+* string $type ['taglike', 'categorylike']
+*/   
+    public static function is_list(string $slug, string $type) : bool 
     {
 
-        if ( self::is_taxonomy($slug) ) { // check if it's taxonomy
-
-            $parts = explode("-", $slug);
-            $tax_type = $parts[0];
-            $slug = array_pop($parts);
-            
-
-            $json_meals = array_keys(Taxonomy::get_tags()); // get list of eexisting meals in json
-
-            if ( in_array($slug, $json_meals) && $tax_type == "tag") { // check if it's existing taxonomy from json with mels
-                return true;
-            } else { // it's not in json, so...
-                return false;
-            }
-
-        } else { // it's not a taxonomy, so...
-            return false;
+        switch ($type) {
+            case 'taglike':
+                if($slug === 'tags' || $slug === 'types') {
+                    return true;
+                } else {
+                    return false;
+                }
+                break;
+            case 'categorylike':
+                if($slug === 'diets' || $slug === 'meals') {
+                    return true;
+                } else {
+                    return false;
+                }
+                break;
         }
 
     }
-    public static function is_diet(string $slug) : bool
-    {
 
-        if ( self::is_taxonomy($slug) ) { // check if it's taxonomy
 
-            $parts = explode("-", $slug);
-            $tax_type = $parts[0];
-            $slug = array_pop($parts);
-            
-
-            $json_meals = array_keys(Taxonomy::get_diets()); // get list of eexisting meals in json
-
-            if ( in_array($slug, $json_meals) && $tax_type == "diet") { // check if it's existing taxonomy from json with mels
-                return true;
-            } else { // it's not in json, so...
-                return false;
-            }
-
-        } else { // it's not a taxonomy, so...
-            return false;
-        }
-
-    }
-    public static function is_type(string $slug) : bool
-    {
-
-        if ( self::is_taxonomy($slug) ) { // check if it's taxonomy
-
-            $parts = explode("-", $slug);
-            $tax_type = $parts[0];
-            $slug = array_pop($parts);
-            
-
-            $json_meals = array_keys(Taxonomy::get_types()); // get list of eexisting meals in json
-
-            if ( in_array($slug, $json_meals) && $tax_type == "type") { // check if it's existing taxonomy from json with mels
-                return true;
-            } else { // it's not in json, so...
-                return false;
-            }
-
-        } else { // it's not a taxonomy, so...
-            return false;
-        }
-
-    }
 
 
 }
