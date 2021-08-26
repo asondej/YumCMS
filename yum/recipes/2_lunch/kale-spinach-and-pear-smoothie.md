@@ -11,9 +11,9 @@
 - 1 1/2 cups cold almond milk (or soy milk or orange juice)
 - 1 tablespoon honey
 
-## Step 1
+### Step 1
 Remove kale leaves from their rough center stalk and coarsely chop.  In a blender, combine kale spinach and almond milk.  Blend until no big kale bits remain.  Stop blender and add banana honey and pear.
-## Step 2
+### Step 2
 Blend until smooth.
 ===
 # Diet

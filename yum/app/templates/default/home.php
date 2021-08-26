@@ -16,7 +16,7 @@ include('commons/main.php');
 					<!-- sidebar -->
 					<?php include('commons/sidebar.php'); ?>
 					<!-- main column -->
-					<div class="col-xl-9 col-lg-8 col-md-7 col-sm-7  mx-auto">
+					<div class="col-xl-9 col-lg-8 col-md-7 col-sm-7 mx-auto order-2">
 						<div class="block">
 							<div class="row equal-parent row-eq-height">
 								<div class="col-xl-4 col-lg-6 col-md-12 col-12 equal-item">

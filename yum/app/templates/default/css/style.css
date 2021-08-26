@@ -3234,6 +3234,16 @@ html {
   padding-bottom: 30px;
 }
 
+article h3 {
+  font-weight: 400;
+}
+article .post-thumb {
+  padding-left: 0px;
+}
+article .post-thumb img {
+  width: 100%;
+}
+
 @media (max-width: 991px) {
   .main-nav .navbar-nav .nav-item .nav-link {
     font-weight: bold;

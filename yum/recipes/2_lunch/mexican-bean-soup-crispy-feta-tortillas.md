@@ -16,13 +16,13 @@
 - 4 large or 8 small flour tortillas
 - small pack coriander, roughly chopped, to serve
 
-## Step 1
+### Step 1
 Heat the oil in a large pan and cook the onion over a medium heat for 10 mins to soften. Stir in the chipotle paste, passata, stock and all the beans. Season, bring to the boil, then gently simmer for 5 mins.
 
-## Step 2
+### Step 2
 Meanwhile, in a bowl crumble the feta and mix with the garlic. Divide between the tortillas, spreading over one half of each, then sprinkle over a little pepper. Fold the uncovered side over and press down. Heat a dry frying pan and cook the tortillas on both sides for a couple of mins until the feta has melted and the tortillas are crisp.
 
-## Step 3
+### Step 3
 Divide the soup between bowls, scatter with coriander and serve with the tortillas.
 ===
 # Diet

@@ -15,14 +15,14 @@
 - 2 cups blueberries
 - 1/4 cup granulated sugar optional, for topping
 
-## Step 1
+### Step 1
 Preheat oven to 350 degrees F. Lightly grease 15 muffins cups or line them with paper liners.
 Whisk together the flour blend with the baking powder and salt in a small bowl. Set aside.
-## Step 2
+### Step 2
 In a large bowl, combine butter and granulated sugar. Beat on medium-low speed until thick. With the beater still running, add the eggs. Beat until combined.
-## Step 3
+### Step 3
 Add the dry ingredients and mix on low speed. Mix until thick. Stop the mixer and add the milk and vanilla extract. Mix until a thick batter forms. 
-## Step 4
+### Step 4
 Gently fold in the blueberries with a rubber spatula.(If you are using frozen or cold blueberries, the batter will get VERY thick. This is totally normal.)
 Spoon batter into prepared muffin pans. Fill each cavity about 2/3 full. Top each muffin with about 1 teaspoon of granulated sugar. (The sugar topping is optional.)
 Bake until a cake tester inserted into the center of one of the muffins comes out clean, about 25 minutes.

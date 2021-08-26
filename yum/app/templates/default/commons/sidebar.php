@@ -1,12 +1,12 @@
-<div class="col-xl-3 col-lg-4 col-md-5 col-sm-5 mx-auto">
+<div class="col-xl-3 col-lg-4 col-md-5 col-sm-5 mx-auto order-1">
 						<div class="sidebar">
 							<!-- Search Widget -->
-							<div class="widget search p-0">
+							<!-- <div class="widget search p-0">
 								<div class="input-group">
 									<input type="text" class="form-control main m-0" id="expire" placeholder="Search...">
 									<span class="input-group-addon"><i class="fa fa-search"></i></span>
 								</div>
-							</div>
+							</div> -->
 							<!-- Category Widget -->
 							<div class="widget category">
 								<!-- Widget Header -->

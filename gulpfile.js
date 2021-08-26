@@ -10,7 +10,7 @@ var concat = require('gulp-concat');
 var paths = {
     style: {
         src: "src/yum/scss/style.scss",
-        dest: "yum/templates/default/css",
+        dest: "yum/app/templates/default/css",
     },
     images: {
         src: [
@@ -18,7 +18,7 @@ var paths = {
             "src/yum/images/**/*.jpg",
             "src/yum/images/**/*.svg",
             ],
-        dest: "yum/templates/default/images",       
+        dest: "yum/app/templates/default/images",       
     },
     js: {
         src: [
@@ -27,7 +27,7 @@ var paths = {
             "src/eventre/js/bootstrap.min.js",
             "src/yum/js/custom.js"
             ],
-        dest: "yum/templates/default/js",
+        dest: "yum/app/templates/default/js",
     },
     watch: ["src/eventre/**/*.scss", "src/yum/**/*.scss", "src/yum/images/**/*", "src/eventre/js/**/*.js","src/yum/js/**/*.js"]
 };

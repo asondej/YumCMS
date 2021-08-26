@@ -33,6 +33,7 @@ class Recipe
         $post_meta = $post_raw[0];
         $post_content_raw = $post_raw[1];
 
+
         $post = [
             "meta" => [
                 "title" => json_decode($post_meta, true)["title"],
@@ -40,8 +41,10 @@ class Recipe
                 "image" => json_decode($post_meta, true)["image"],
             ],
             'taxonomy' => [
-                'meals' => $this->get_post_file_path(true),
-                'diets' => $this->get_post_diet(),
+                'meal' => $this->get_post_file_path(true),
+                'meal_url' => Taxonomy::tax_url_from_slug( $this->get_post_file_path(true), 'meals'),
+                'diet' => trim($this->get_post_diet()),
+                'diet_url' => Taxonomy::tax_url_from_slug( trim($this->get_post_diet()), 'diets'),
                 'types' => $this->get_post_taglike_taxonomies('types'),
                 'tags' => $this->get_post_taglike_taxonomies('tags'),
             ],
@@ -77,25 +80,53 @@ class Recipe
     private function get_post_taglike_taxonomies(string $type) : array
     {
         $post_parts = $this->post_parts_array();
+   
         if( $type === 'tags') {
             $index = 3;
         } elseif ($type === 'types') {
             $index = 4;
         }
         $tax = $post_parts[$index]; 
-
         $tags_array = []; 
-       $tags_array = preg_grep('/([^,\n]+)/', explode("\n", $tax));
-       if(stripos($tags_array[0], 'tags') || stripos($tags_array[0], 'type')) {
-        $tags_array = explode(',', end($tags_array));
+        $tags_array = preg_grep('/([^,\n]+)/', explode("\n", $tax));
+
+        $tags_array = array_map(function($value) {
+            $value = trim($value); 
+            return $value;
+        },$tags_array); 
+        
+        $tags_array = array_filter($tags_array);   
+
+
+        if(stripos($tags_array[0], 'tags')) { // for tags
+            $tags_array = explode(',', end($tags_array));
+
+            $tags_array = array_map(function($value) {
+                $value = trim($value); 
+                return $value;
+            },$tags_array); 
+
+            $tags_array = array_flip($tags_array); 
+            foreach($tags_array as $name=>&$index) {
+                $index = Taxonomy::tax_url_from_slug( Taxonomy::taxonomy_to_slug($name), 'tags');
+            }
+
+       } elseif(stripos($tags_array[0], 'type')) { // for types
+            $tags_array = explode(',', end($tags_array));
+
+            $tags_array = array_map(function($value) {
+                $value = trim($value); 
+                return $value;
+            },$tags_array); 
+
+            $tags_array = array_flip($tags_array); 
+            foreach($tags_array as $name=>&$index) {
+                $index = Taxonomy::tax_url_from_slug( Taxonomy::taxonomy_to_slug($name), 'types');
+            }
        }
 
-       $tags_array = array_map(function($value) {
-           $value = trim($value); 
-           return $value;
-       },$tags_array);
 
-       $tags_array = array_filter($tags_array);
+        
 
         return $tags_array;
     }

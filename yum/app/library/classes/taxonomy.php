@@ -431,7 +431,7 @@ class Taxonomy {
 /*
 * string $taxonomy ['tag/s', 'type/s', 'diet/s', 'meal/s']
 */
-    protected static function tax_url_from_slug(string $slug, string $taxonomy) : string
+    public static function tax_url_from_slug(string $slug, string $taxonomy) : string
     {
         $tax = match ($taxonomy) {
             'tags', 'tag' => 'tag',
