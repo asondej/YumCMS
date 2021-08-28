@@ -233,15 +233,77 @@ html {
 
 
 article {
-    h3 {
+    .post-details {
+        padding-bottom:25px;
+    }
+
+    .taxonomy {
+        
+        color: white;
+        background: #2A2A37;
+        padding:12px;
+        padding-left:22px;
+        padding-top:17px;
+        h4 {
+            font-size:16px;
+            color: white;
+            display:inline-block;
+            margin-right:3px;
+        }
+        .line {
+            margin-top:4px;
+            &:not(h4) {
+                color:#848484;
+            }
+            &:first-child {
+                margin-top:8px;
+            }
+        }
+
+        .meal {
+            font-size:17px;
+            &:before {
+                $size_padding:3px;
+                margin-right:15px;
+                background: white;
+                border-radius: 20px;
+                text-align: center;
+                padding-top: 1.5px;
+                width:40 + $size_padding;
+                height:40 + $size_padding;
+                margin-bottom:15px;
+            }
+        }
+        .diet {
+            font-size:17px;
+            &:before {
+                background: white;
+                border-radius:5px;
+                padding:4px;
+                padding-right:3px;
+                height:39px;
+                //margin-right:11px;
+                margin-right:15px;
+                margin-bottom:30px;
+            }
+        }
+    }
+    
+    h3, h2 {
         font-weight: 400;
+        font-size: 25px;
     }
 
     .post-thumb {
-        padding-left:0px;
+        padding:0px;
         img {
             width:100%;
         }
+    }
+
+    ul {
+        margin-top:25px;
+        margin-bottom:40px;
     }
 }
 

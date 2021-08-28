@@ -19,12 +19,28 @@ include('commons/main.php');
 						<div class="block">
 
                         <article class="blog-post single row">
-                            <div class="post-thumb col-md-6">
+                            <div class="post-thumb col-xl-5">
                                 <img src="<?php echo $page['meta']['image']; ?>" alt="post-image" class="img-fluid">
                             </div>
-                            <div class=" col-md-6">
-                                taxonomy
+                            <div class="taxonomy col-xl-7">
+                                <div class="row">
+                                    <a href="<?php echo $page['taxonomy']['meal_url']; ?>" class="col-md-6 <?php  echo get_taxonomy_icon("meal", $page['taxonomy']['meal']) ?>">
+                                    <?php echo $page['taxonomy']['meal']; ?>
+                                    </a> <br/>
+                                    <a href="<?php echo $page['taxonomy']['diet_url']; ?>" class="col-md-6 <?php  echo get_taxonomy_icon("diet", $page['taxonomy']['diet']) ?>">
+                                    <?php echo $page['taxonomy']['diet']; ?>
+                                    </a>
+                                </div>
+                                <div class="line">
+                                    <h4>Tags:</h4>
+                                    <?php echo get_taxonomy($page['taxonomy']['tags']);?>
+                                </div>
+                                <div class="line">
+                                    <h4>Type:</h4>
+                                    <?php echo get_taxonomy($page['taxonomy']['types']);?>
+                                </div>                              
                             </div>
+
                             <div class="post-content">
 
                                 <!-- <div class="post-title">

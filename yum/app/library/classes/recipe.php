@@ -41,7 +41,7 @@ class Recipe
                 "image" => json_decode($post_meta, true)["image"],
             ],
             'taxonomy' => [
-                'meal' => $this->get_post_file_path(true),
+                'meal' => str_replace('-', ' ', $this->get_post_file_path(true)),
                 'meal_url' => Taxonomy::tax_url_from_slug( $this->get_post_file_path(true), 'meals'),
                 'diet' => trim($this->get_post_diet()),
                 'diet_url' => Taxonomy::tax_url_from_slug( trim($this->get_post_diet()), 'diets'),
