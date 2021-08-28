@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 use Library\Classes\Taxonomy;
+use Library\Classes\Content;
 
 function generate_tax_menu( string $taxonomy, $class = "dropdown-item") : string 
 {
@@ -65,5 +66,35 @@ function get_taxonomy(array $taxonomy_values, string $separator = ', ', $asLink 
 
     return $list;
 
+}
+
+function show_popular_tags(int $howmany = 8, array $open_close = ['<li class="list-inline-item"><a href="%s">', '</a></li>']) : string 
+{
+    $tags_array = Content::get_popular_tags($howmany);
+    $html = '';
+
+    foreach ($tags_array as $name=>$url) {
+        $open = sprintf($open_close[0], $url);
+        $close = $open_close[1];
+        $html.= "$open$name$close";
+    }
+
+    return $html;
+}
+
+function show_diets (array $open_close = ['<li><a href="" class="%s">','<span class="float-right">(%s)</span></a></li>']) : string 
+{
+    $html = '';
+    $diets = Content::get_diets_with_number(true);
+
+    foreach($diets as $diet=>$postsNumber) {
+        $diet = str_replace('-', ' ', $diet);
+        $value = get_taxonomy_icon('diet', $diet);
+        $open = sprintf($open_close[0], $value);
+        $close = sprintf($open_close[1], $postsNumber);
+        $html.= $open.$diet.$close;
+    }
+    
+    return $html;
 }
 

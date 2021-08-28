@@ -30,6 +30,7 @@ class Taxonomy {
 
     }
 
+
     public function get_meals_and_recipes(bool $includeEmpty = true) : array 
     {
         $allRecipes = Recipe::list_all_recipes(true);
@@ -349,7 +350,8 @@ class Taxonomy {
         return  $all_tax_values;
     }
 
-    protected static function taglike_from_raw(string $raw) : array {
+    protected static function taglike_from_raw(string $raw) : array 
+    {
         $tags_array = preg_grep(self::$taglike_pattern, explode("\n", $raw));
 
         $tags_array = array_map(function($value){
@@ -483,8 +485,6 @@ class Taxonomy {
             $html.= sprintf($html_open_close[0], $url, $class ).$name.$html_open_close[1];
         }
 
-        //$html = htmlspecialchars($html);
-
         return $html;
     }
 
@@ -499,7 +499,6 @@ class Taxonomy {
         $taxonomy_name = end($tax_type);
         $taxonomy_value = end($parts);
         $taxonomy_value = str_replace('-', ' ', $taxonomy_value);
-        //dump($taxonomy_value);
 
         $posts_in = self::list_recipes_in_taxonomy($this->slug);
 

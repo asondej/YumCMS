@@ -38,9 +38,7 @@
 								<!-- Widget Header -->
 								<h5 class="widget-header">Diet</h5>
 								<ul class="category-list m-0 p-0">
-									<li><a href="" class="diet pescovege">Pescovege<span class="float-right">(6)</span></a></li>
-									<li><a href="" class="diet vege">Vege<span class="float-right">(9)</span></a></li>
-									<li><a href="" class="diet meat">With meat<span class="float-right">(3)</span></a></li>
+									<?php echo show_diets();?>
 								</ul>
 							</div>		
 
@@ -49,7 +47,8 @@
 								<!-- Widget Header -->
 								<h5 class="widget-header">Popular Tags</h5>
 								<ul class="list-inline">
-									<li class="list-inline-item"><a href="#">Pasta</a></li>
+									<?php echo show_popular_tags(); ?>
+									<!-- <li class="list-inline-item"><a href="#">Pasta</a></li>
 									<li class="list-inline-item"><a href="#">Low IG</a></li>
 									<li class="list-inline-item"><a href="#">Bread</a></li>
 									<li class="list-inline-item"><a href="#">Simple</a></li>
@@ -60,7 +59,7 @@
 									<li class="list-inline-item"><a href="#">News</a></li>
 									<li class="list-inline-item"><a href="#">Events</a></li>
 									<li class="list-inline-item"><a href="#">Sports</a></li>
-									<li class="list-inline-item"><a href="#">Music</a></li>
+									<li class="list-inline-item"><a href="#">Music</a></li> -->
 								</ul>
 							</div>
 						</div>

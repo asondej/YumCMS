@@ -3298,6 +3298,11 @@ article ul {
   margin-bottom: 40px;
 }
 
+.widget.tags ul li a {
+  font-size: 13px;
+  padding: 8px 18px;
+}
+
 @media (max-width: 991px) {
   .main-nav .navbar-nav .nav-item .nav-link {
     font-weight: bold;

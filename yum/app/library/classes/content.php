@@ -9,6 +9,7 @@ class Content {
     {
         return sprintf('%s/content/%s/%s', ABS_PATH, $content_type, $slug);
     }
+
     public static function is_page( string $slug ): bool
     {
        $path = self::get_content_path("page", $slug );
@@ -18,6 +19,7 @@ class Content {
            return false;
        }
     }
+
     public static function is_post(string $slug): bool
     {
 
@@ -28,9 +30,9 @@ class Content {
             return false;
         }
     }
+
     public static function is_taxonomy(string $slug): bool|int
     {
-
         $taxonomies = ['diet', 'diets', 'meal', 'meals', 'tag', 'tags', 'type', 'types'];
         
         $parts = explode("-", $slug);
@@ -84,86 +86,6 @@ class Content {
 
     }
 
-    // public static function is_meal(string $slug) : bool
-    // {
-
-    //     if ( self::is_taxonomy($slug) ) { // check if it's taxonomy
-
-    //         $info = self::tax_info_from_slug($slug);
-            
-    //         $json_tax = array_keys(Taxonomy::get_meals()); // get list of existing meals in json
-
-    //         if ( in_array($info['slug'], $json_tax) && $info['tax_type'] == "meal") { // check if it's existing taxonomy from json with mels
-    //             return true;
-    //         } else { // it's not in json, so...
-    //             return false;
-    //         }
-
-    //     } else { // it's not a taxonomy, so...
-    //         return false;
-    //     }
-
-    // }
-    // public static function is_tag(string $slug) : bool
-    // {
-    //     if ( self::is_taxonomy($slug) ) { // check if it's taxonomy
-
-    //         $info = self::tax_info_from_slug($slug);
-            
-    //         $json_tax = array_keys(Taxonomy::get_tags()); // get list of existing meals in json
-
-    //         if ( in_array($info['slug'], $json_tax) && $info['tax_type'] == "tag") { // check if it's existing taxonomy from json with mels
-    //             return true;
-    //         } else { // it's not in json, so...
-    //             return false;
-    //         }
-
-    //     } else { // it's not a taxonomy, so...
-    //         return false;
-    //     }
-
-    // }
-    // public static function is_diet(string $slug) : bool
-    // {
-    //     if ( self::is_taxonomy($slug) ) { // check if it's taxonomy
-
-    //         $info = self::tax_info_from_slug($slug);
-            
-    //         $json_tax = array_keys(Taxonomy::get_diets()); // get list of existing meals in json
-
-    //         if ( in_array($info['slug'], $json_tax) && $info['tax_type'] == "diet") { // check if it's existing taxonomy from json with mels
-    //             return true;
-    //         } else { // it's not in json, so...
-    //             return false;
-    //         }
-
-    //     } else { // it's not a taxonomy, so...
-    //         return false;
-    //     }
-
-    // }
-    // public static function is_type(string $slug) : bool
-    // {
-    
-
-    //     if ( self::is_taxonomy($slug) ) { // check if it's taxonomy
-
-    //         $info = self::tax_info_from_slug($slug);
-            
-    //         $json_tax = array_keys(Taxonomy::get_types()); // get list of existing meals in json
-
-    //         if ( in_array($info['slug'], $json_tax) && $info['tax_type'] == "type") { // check if it's existing taxonomy from json with mels
-    //             return true;
-    //         } else { // it's not in json, so...
-    //             return false;
-    //         }
-
-    //     } else { // it's not a taxonomy, so...
-    //         return false;
-    //     }
-
-
-    // }
  
 /*
 * string $type ['taglike', 'categorylike']
@@ -191,6 +113,45 @@ class Content {
     }
 
 
+    public static function get_popular_tags(int $howmany = 8 ) : array 
+    {
+        $popular = [];
 
+        $tags = file_get_contents(ABS_PATH.'/content/taxonomy/tag');
+        $tags = json_decode($tags, true);
+
+        usort($tags, function($a,$b){
+            return count($b['posts']) <=> count($a['posts']);
+        });
+
+        for ($i = 0; $i <= $howmany; $i++){
+            // dump($howmany);
+            // dump($tags[$i]);
+            $popular[$tags[$i]['name']] = Taxonomy::tax_url_from_slug(Taxonomy::taxonomy_to_slug($tags[$i]['name']), 'tags');
+        }
+
+        return $popular;
+
+    }
+
+    public static function get_diets_with_number($popular_sort = false) : array {
+
+        $diets_with_number = [];
+
+        $diets = file_get_contents(ABS_PATH.'/content/taxonomy/diet');
+        $diets = json_decode($diets, true);
+
+        foreach ($diets as $diet=>$details) {
+
+            $diets_with_number[$diet] = count($details['posts']);
+
+        }
+
+        if($popular_sort) {
+            arsort($diets_with_number);
+        }
+
+        return $diets_with_number;
+    }
 
 }

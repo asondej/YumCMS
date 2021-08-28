@@ -44,6 +44,7 @@ class Yum
 
         //$this->taxonomy->list_recipes_in_taxonomy();
 
+        Content::get_diets_with_number(true);
         
         
         if($show_debug_details) {
