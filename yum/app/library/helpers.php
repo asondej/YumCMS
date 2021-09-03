@@ -2,7 +2,8 @@
 declare(strict_types=1);
 
 use Library\Classes\Taxonomy;
-use Library\Classes\Content;
+use Library\Classes\CategoryLike;
+use Library\Classes\TagLike;
 
 function generate_tax_menu( string $taxonomy, $class = "dropdown-item") : string 
 {
@@ -70,7 +71,8 @@ function get_taxonomy(array $taxonomy_values, string $separator = ', ', $asLink 
 
 function show_popular_tags(int $howmany = 8, array $open_close = ['<li class="list-inline-item"><a href="%s">', '</a></li>']) : string 
 {
-    $tags_array = Content::get_popular_tags($howmany);
+    $tags_array = tagLike::get_popular('tag', $howmany);
+  
     $html = '';
 
     foreach ($tags_array as $name=>$url) {
@@ -82,17 +84,52 @@ function show_popular_tags(int $howmany = 8, array $open_close = ['<li class="li
     return $html;
 }
 
-function show_diets (array $open_close = ['<li><a href="" class="%s">','<span class="float-right">(%s)</span></a></li>']) : string 
+function show_types(int $howmany = 8, array $open_close = ['<li class="list-inline-item"><a href="%s">', '</a></li>']) : string 
+{
+    $tags_array = tagLike::get_all_with_url('type');
+    $html = '';
+    $i = 0;
+
+    foreach ($tags_array as $name=>$url) {
+        $i++; if( $i <=  $howmany) {
+        $open = sprintf($open_close[0], $url); 
+        $close = $open_close[1];
+        $html.= "$open$name$close";
+        }
+    }
+
+    return $html;
+}
+
+function show_diets (array $open_close = ['<li><a href="%s" class="%s">','<span class="float-right">(%s)</span></a></li>']) : string 
 {
     $html = '';
-    $diets = Content::get_diets_with_number(true);
+    $diets = CategoryLike::get_all('diet', true);
 
     foreach($diets as $diet=>$postsNumber) {
+        $url = 'http://'.$_SERVER['SERVER_NAME'].'/diet/'.Taxonomy::taxonomy_to_slug($diet);
         $diet = str_replace('-', ' ', $diet);
         $value = get_taxonomy_icon('diet', $diet);
-        $open = sprintf($open_close[0], $value);
+        $open = sprintf($open_close[0], $url, $value);
         $close = sprintf($open_close[1], $postsNumber);
         $html.= $open.$diet.$close;
+    }
+    
+    return $html;
+}
+
+function show_meals (array $open_close = ['<li><a href="%s" class="%s">','<span class="float-right">(%s)</span></a></li>']) : string 
+{
+    $html = '';
+    $meals = CategoryLike::get_all('meal', true);
+
+    foreach($meals as $meal=>$postsNumber) {
+        $url = 'http://'.$_SERVER['SERVER_NAME'].'/meal/'.Taxonomy::taxonomy_to_slug($meal);
+        $meal= str_replace('-', ' ', $meal);
+        $value = get_taxonomy_icon('meal', $meal);
+        $open = sprintf($open_close[0], $url, $value);
+        $close = sprintf($open_close[1], $postsNumber);
+        $html.= $open.$meal.$close;
     }
     
     return $html;

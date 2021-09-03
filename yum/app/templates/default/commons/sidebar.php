@@ -12,12 +12,13 @@
 								<!-- Widget Header -->
 								<h5 class="widget-header">Meals</h5>
 								<ul class="category-list m-0 p-0">
-									<li><a href="" class="meal breakfast">Breakfast<span class="float-right">(6)</span></a></li>
+									<?php echo show_meals(); ?>
+									<!-- <li><a href="" class="meal breakfast">Breakfast<span class="float-right">(6)</span></a></li>
 									<li><a href="" class="meal lunch">Lunch<span class="float-right">(9)</span></a></li>
 									<li><a href="" class="meal dinner">Dinner<span class="float-right">(3)</span></a></li>
 									<li><a href="" class="meal snack">Evening snack<span class="float-right">(5)</span></a></li>
 									<li><a href="" class="meal supper">Supper<span class="float-right">(3)</span></a></li>
-									<li><a href="" class="meal dessert">Dessert<span class="float-right">(7)</span></a></li>
+									<li><a href="" class="meal dessert">Dessert<span class="float-right">(7)</span></a></li> -->
 								</ul>
 							</div>
 
@@ -26,10 +27,11 @@
 								<!-- Widget Header -->
 								<h5 class="widget-header">Types</h5>
 								<ul class="list-inline">
-									<li class="list-inline-item"><a href="#">soup</a></li>
+									<?php echo show_types(12); ?>
+									<!-- <li class="list-inline-item"><a href="#">soup</a></li>
 									<li class="list-inline-item"><a href="#">salad</a></li>
 									<li class="list-inline-item"><a href="#">eintopf</a></li>
-									<li class="list-inline-item"><a href="#">steaming</a></li>
+									<li class="list-inline-item"><a href="#">steaming</a></li> -->
 								</ul>
 							</div>					
 

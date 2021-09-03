@@ -1,6 +1,6 @@
 {
     "title" : "Simple fish stew",
-    "image" : "http://www.fillmurray.com/200/300"
+    "image" : "https://images.unsplash.com/photo-1567982047351-76b6f93e38ee?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZmlzaCUyMHN0ZXd8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
 }
 ===
 

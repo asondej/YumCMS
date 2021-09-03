@@ -35,12 +35,13 @@ $yum = new Yum(true);
 - method for listing all recipes ✔️
 - method for listing recipes in specific category ✔️
 -  method generating links to recipes 
-- create helper functions for displaying types and tags in template
-- add printing option to recipe page
-
-
--> druga się na niej opiera, przejezdza sie po zadanej taksonomii i generuje linki dla wszystkich wartosci, obudowane dowolnym htmlem(?)
--> wtedy od razu wykorzystam te druga do generowania menu (na razie nie bedzie zadnej klasy do zarzadzania menu)
+- create helper functions for displaying types and tags in template ✔️
+- add printing option to recipe page ✔️
+- create frontend adding form
+- create taxonomy html templates
+- method for displaying pages
+- method for homepage 
+- homepage pagination
 
 */
 

@@ -44,15 +44,14 @@ class Yum
 
         //$this->taxonomy->list_recipes_in_taxonomy();
 
-        Content::get_diets_with_number(true);
         
         
         if($show_debug_details) {
-            echo "<br>=====<br> slug: ". $this->slug;
+            echo "<div class='noprint'><br>=====<br> slug: ". $this->slug;
             echo "<br>";
             echo "template type: ".$this->template_type;
             echo "<br>";
-            echo "template: ".$this->template;
+            echo "template: ".$this->template.'</div>';
         }
         
 
@@ -70,7 +69,13 @@ class Yum
             $url_parts = explode("/", $query);
             $url_parts = array_filter($url_parts);
             if( count($url_parts) > 2) { // if url contains more than 2 parts
-                return "404";
+
+                if(end($url_parts) === 'print') {
+                    return 'print';
+                } else {
+                    return "404";
+                }
+                
             } elseif (count($url_parts) === 2 && in_array($url_parts[0], $taxonomies)) {  // taxonomies
                
                   $match =  match ($url_parts[0]) { 
@@ -85,11 +90,11 @@ class Yum
             } elseif (count($url_parts) === 2 && $url_parts[0] === "recipe") { //recipes
                 return "recipe/".$url_parts[1];
             } elseif ( count($url_parts) === 2 ) { // if not recipe and not taxonony, then oopss...
-
                 return "404";
             }
             else {
                 return array_pop($url_parts);
+                
             }
             
             return null; // if something goes wrong
@@ -100,6 +105,9 @@ class Yum
         switch(true) {
             case ( $this->getSlug() == "home" ):
                 $this->template_type = "home";
+                break;
+            case ( $this->getSlug() == "print" ):
+                $this->template_type = "print";
                 break;
             case ( $this->getSlug() == "feed" ):
                 $this->template_type = "rss";
@@ -150,6 +158,12 @@ class Yum
                 break;
             case 'recipe':
                 $recipe = new Recipe($this->slug);
+                $recipe = $recipe->getPost($this->slug);
+                $this->load_this_template($recipe);
+                break;
+            case 'print':
+                $recipe = new Recipe($this->slug);
+                
                 $recipe = $recipe->getPost($this->slug);
                 $this->load_this_template($recipe);
                 break;

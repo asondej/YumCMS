@@ -1,6 +1,6 @@
 {
     "title" : "Steamed Prawns in Garlic Sauce Recipe",
-    "image" : "http://www.fillmurray.com/200/300"
+    "image" : "https://images.unsplash.com/photo-1625943553852-781c6dd46faa?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8cHJhd25zfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
 }
 ===
 

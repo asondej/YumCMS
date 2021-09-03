@@ -19,15 +19,13 @@ include('commons/main.php');
 						<div class="block">
 
                         <article class="blog-post single row">
-                            <div class="post-thumb col-xl-5">
-                                <img src="<?php echo $page['meta']['image']; ?>" alt="post-image" class="img-fluid">
-                            </div>
-                            <div class="taxonomy col-xl-7">
-                                <div class="row">
-                                    <a href="<?php echo $page['taxonomy']['meal_url']; ?>" class="col-md-6 <?php  echo get_taxonomy_icon("meal", $page['taxonomy']['meal']) ?>">
+
+                            <div class="taxonomy col-xl-7 order-sm-2 order-xs-2">
+                                <div class="row icontax">
+                                    <a href="<?php echo $page['taxonomy']['meal_url']; ?>" class="col-md-6 col-sm-12 col-xs-6  <?php  echo get_taxonomy_icon("meal", $page['taxonomy']['meal']) ?>">
                                     <?php echo $page['taxonomy']['meal']; ?>
                                     </a> <br/>
-                                    <a href="<?php echo $page['taxonomy']['diet_url']; ?>" class="col-md-6 <?php  echo get_taxonomy_icon("diet", $page['taxonomy']['diet']) ?>">
+                                    <a href="<?php echo $page['taxonomy']['diet_url']; ?>" class="col-md-6 col-sm-12 col-xs-6   <?php  echo get_taxonomy_icon("diet", $page['taxonomy']['diet']) ?>">
                                     <?php echo $page['taxonomy']['diet']; ?>
                                     </a>
                                 </div>
@@ -38,10 +36,15 @@ include('commons/main.php');
                                 <div class="line">
                                     <h4>Type:</h4>
                                     <?php echo get_taxonomy($page['taxonomy']['types']);?>
-                                </div>                              
+                                </div>                
+                                <a class="print" href="<?php echo $_SERVER['REQUEST_URI']; ?>/print">Print</a>              
                             </div>
 
-                            <div class="post-content">
+                            <div class="post-thumb col-xl-5 order-sm-1 order-xs-1" style="background:url(<?php echo $page['meta']['image']; ?>); background-size:cover">
+                                <!-- <img src="<?php echo $page['meta']['image']; ?>" alt="post-image" class="img-fluid"> -->
+                            </div>
+
+                            <div class="post-content order-3">
 
                                 <!-- <div class="post-title">
                                     <h3><?php echo $page['meta']['title'];?></h3>

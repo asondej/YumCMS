@@ -1,6 +1,6 @@
 {
     "title" : "Quinoa salad with grilled halloumi",
-    "image" : "http://www.fillmurray.com/200/300"
+    "image" : "https://images.unsplash.com/photo-1615865417491-9941019fbc00?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cXVpbm9hfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
 }
 ===
 

@@ -1,6 +1,6 @@
 {
     "title" : "Mexican bean soup with crispy feta tortillas",
-    "image" : "http://www.fillmurray.com/200/300"
+    "image" : "https://images.unsplash.com/photo-1591798455002-5bcec304c86e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhbiUyMHNvdXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
 }
 ===
 

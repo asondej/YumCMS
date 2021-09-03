@@ -3,7 +3,7 @@
 =            Page Title            =
 =================================-->
 
-<section class="page-title bg-title overlay-dark">
+<section class="page-title bg-title overlay-dark <?php if(isset($page['taxonomy'])): ?>recipe-bg<?php endif; ?>">
 	<div class="container">
 		<div class="row">
 			<div class="col-12 text-center">

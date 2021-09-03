@@ -25,7 +25,7 @@ class Recipe
     {
     
         $path = $this->get_post_file_path();
-        
+
         $post_raw = file_get_contents($path); 
         $post_raw = self::split_raw($post_raw);  
         
@@ -149,7 +149,6 @@ class Recipe
 
         $all_posts =  $this->list_all_recipes(); 
         $all_posts_names = array_map(function($value) {
-            
             $elements = explode("/", $value);
             $filename = $elements[1];
             $value = $filename;
@@ -157,6 +156,14 @@ class Recipe
 
         }, $all_posts);
 
+
+        if($this->file_name === "print") {
+            $url = $_SERVER['REQUEST_URI'];
+            $url_parts = explode('/', $url);
+            $url_parts = array_filter($url_parts);
+            array_pop($url_parts);
+            $this->file_name = end($url_parts);
+        }
 
         if ( in_array( $this->file_name, $all_posts_names) ) { 
             $index_in_allPost_list = array_search($this->file_name, $all_posts_names);

@@ -1,1 +1,1 @@
-404 tu jest blad
+404 oops

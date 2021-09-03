@@ -1,6 +1,6 @@
 {
     "title" : "Basic Chicken Soup",
-    "image" : "http://www.fillmurray.com/200/300"
+    "image" : "https://images.unsplash.com/photo-1612966948332-81d747414a8f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2hpY2tlbiUyMHNvdXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
 }
 ===
 

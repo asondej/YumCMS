@@ -58,9 +58,9 @@ class Content {
             'slug'      => $slug,
         ];
     }
-/*
-* string $type ['tag', 'type', 'meal', 'diet']
-*/  
+    /*
+    * string $type ['tag', 'type', 'meal', 'diet']
+    */  
     public static function is_tax_type( string $type, string $slug) : bool {
 
         if ( self::is_taxonomy($slug) ) { // check if it's taxonomy
@@ -87,9 +87,9 @@ class Content {
     }
 
  
-/*
-* string $type ['taglike', 'categorylike']
-*/   
+    /*
+    * string $type ['taglike', 'categorylike']
+    */   
     public static function is_list(string $slug, string $type) : bool 
     {
 
@@ -113,45 +113,8 @@ class Content {
     }
 
 
-    public static function get_popular_tags(int $howmany = 8 ) : array 
-    {
-        $popular = [];
 
-        $tags = file_get_contents(ABS_PATH.'/content/taxonomy/tag');
-        $tags = json_decode($tags, true);
 
-        usort($tags, function($a,$b){
-            return count($b['posts']) <=> count($a['posts']);
-        });
 
-        for ($i = 0; $i <= $howmany; $i++){
-            // dump($howmany);
-            // dump($tags[$i]);
-            $popular[$tags[$i]['name']] = Taxonomy::tax_url_from_slug(Taxonomy::taxonomy_to_slug($tags[$i]['name']), 'tags');
-        }
-
-        return $popular;
-
-    }
-
-    public static function get_diets_with_number($popular_sort = false) : array {
-
-        $diets_with_number = [];
-
-        $diets = file_get_contents(ABS_PATH.'/content/taxonomy/diet');
-        $diets = json_decode($diets, true);
-
-        foreach ($diets as $diet=>$details) {
-
-            $diets_with_number[$diet] = count($details['posts']);
-
-        }
-
-        if($popular_sort) {
-            arsort($diets_with_number);
-        }
-
-        return $diets_with_number;
-    }
 
 }
