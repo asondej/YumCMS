@@ -119,7 +119,6 @@ class Yum
                 $this->template_type = "recipe";
                 break;
             case ( Content::is_tax_type( 'meal', $this->getSlug() ) ):
-                dump('warunek się spradzil');
                 $this->template_type = "category_like_single";
                 break;
             case ( Content::is_tax_type( 'diet', $this->getSlug() ) ):
@@ -169,19 +168,22 @@ class Yum
                 break;
             case 'category_like_single': // meals & diets
                 $details = $this->taxonomy->taxonomyPage_single($this->slug);
+                dump($details);
                 $this->load_this_template($details);
                 break;
             case 'tag_like_single':
                 $details = $this->taxonomy->taxonomyPage_single($this->slug);
-                //dump($details);
+                dump($details);
                 $this->load_this_template($details);
                 break;
             case 'category_like_all': // meals & diets
                 $details = $this->taxonomy->taxonomyPage_list($this->slug);
+                dump($details);
                 $this->load_this_template($details);
                 break;
             case 'tag_like_all':
                 $details = $this->taxonomy->taxonomyPage_list($this->slug);
+                dump($details);
                 $this->load_this_template($details);
                 break;
             

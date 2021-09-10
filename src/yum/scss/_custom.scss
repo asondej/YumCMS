@@ -2,6 +2,12 @@ html {
     scroll-behavior: smooth;
 }
 
+.section {
+    &.recipe {
+        padding-top:0px;
+    }
+}
+
 .yum-thumb-holder {
     width:80px;
     height:75px;
@@ -302,9 +308,9 @@ article {
         .print {
             color:white;
             position:absolute;
-            bottom:15px;
+            bottom:14px;
             right:20px;
-            opacity:0.7;
+            opacity:0.6;
             &:before {
                 position:relative;
                 top:3px;

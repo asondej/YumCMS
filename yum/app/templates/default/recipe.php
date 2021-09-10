@@ -8,14 +8,14 @@ include('commons/main.php');
 =            CONTENT            =
 =================================-->
 
-<section class="news section">
+<section class="news section recipe">
 	<!-- <div class="row"> -->
 		<div class="col-10 mx-auto">
 			<div class="container-wide">
 				<div class="row mt-30">
 					
 					<!-- main column -->
-					<div class="col-xl-9 col-lg-8 col-md-7 col-sm-7 mx-auto order-2">
+					<div class="col-xl-9 col-lg-8 col-md-7 col-sm-7 mx-auto order-1 order-sm-2">
 						<div class="block">
 
                         <article class="blog-post single row">

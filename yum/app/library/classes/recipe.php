@@ -52,7 +52,6 @@ class Recipe
         ];
 
         $post = array_merge($this->get_taxonomy($this->slug), $post);
-        
         return $post;
 
     }

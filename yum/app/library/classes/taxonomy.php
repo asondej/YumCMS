@@ -501,6 +501,7 @@ class Taxonomy {
         $taxonomy_value = str_replace('-', ' ', $taxonomy_value);
 
         $posts_in = self::list_recipes_in_taxonomy($this->slug);
+        
 
         $page = [
             'tax_name' => $taxonomy_name,
@@ -510,6 +511,7 @@ class Taxonomy {
             ], 
             'posts'=> $posts_in,
         ];
+        
         return $page;
     }
 
@@ -523,7 +525,6 @@ class Taxonomy {
             'values' => self::list_taxonomy($slug),
         ];
 
-        //dump($page);
         return $page;
     }
 
@@ -599,12 +600,10 @@ class Taxonomy {
             foreach ($post_with_tax_value as $post) {
                 
                 foreach ($recipes as $details) {
-
                     $path = $details['recipe'];
-                    $title = $details['title'];
 
                     if ( str_contains($path, $post) ) {
-                        $values[$post] = $title;
+                        $values[$post] = $details;
                     }
                     
                 }

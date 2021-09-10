@@ -1,4 +1,4 @@
-<div class="col-xl-3 col-lg-4 col-md-5 col-sm-5 mx-auto order-1">
+<div class="col-xl-3 col-lg-4 col-md-5 col-sm-5 mx-auto order-2 order-sm-1">
 						<div class="sidebar">
 							<!-- Search Widget -->
 							<!-- <div class="widget search p-0">

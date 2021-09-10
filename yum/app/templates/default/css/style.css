@@ -3064,6 +3064,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.section.recipe {
+  padding-top: 0px;
+}
+
 .yum-thumb-holder {
   width: 80px;
   height: 75px;
@@ -3297,9 +3301,9 @@ article .taxonomy .diet:before {
 article .taxonomy .print {
   color: white;
   position: absolute;
-  bottom: 15px;
+  bottom: 14px;
   right: 20px;
-  opacity: 0.7;
+  opacity: 0.6;
 }
 article .taxonomy .print:before {
   position: relative;

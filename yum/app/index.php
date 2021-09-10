@@ -34,7 +34,7 @@ $yum = new Yum(true);
 - create method to get links for respective taxonomy pages ✔️
 - method for listing all recipes ✔️
 - method for listing recipes in specific category ✔️
--  method generating links to recipes 
+-  method generating links to recipes (?)
 - create helper functions for displaying types and tags in template ✔️
 - add printing option to recipe page ✔️
 - create frontend adding form
