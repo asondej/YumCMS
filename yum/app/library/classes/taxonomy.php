@@ -242,6 +242,10 @@ class Taxonomy {
         $all = [];
         foreach($allRecipes as $recipe) {
 
+            $elements = explode("/", $recipe);
+            array_pop($elements);
+            $elements = explode("_", end($elements));
+            $meal = str_replace('-', ' ', end($elements));
             $raw_content = file_get_contents($recipe);
             $content_parts = Recipe::split_raw($raw_content); 
             $meta = json_decode($content_parts[0], true);
@@ -250,12 +254,15 @@ class Taxonomy {
                 "title" => $meta['title'],
                 "image" => $meta['image'],
                 "diet" => $content_parts[2],
+                "meal" => $meal,
                 "tags" => $content_parts[3],
                 "types" => $content_parts[4],
             ]);
 
         }
 
+        
+        //dump(file_get_contents());
     
         foreach ($all as &$recipe_tax_details) {
 
@@ -378,7 +385,7 @@ class Taxonomy {
     public static function get_meals() : array
     {
         $path = ABS_PATH . self::$folder . self::$meals;
-        $file = file_exists($path) ? file_get_contents($path) : self::$meals. "taxonomy file not found"; 
+        $file = file_exists($path) ? file_get_contents($path) : self::$meals. " taxonomy file not found"; 
         if (json_decode($file)) {
             return json_decode($file, true);
         } else {
@@ -511,6 +518,8 @@ class Taxonomy {
             ], 
             'posts'=> $posts_in,
         ];
+
+        //dump($page);
         
         return $page;
     }

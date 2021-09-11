@@ -168,7 +168,7 @@ class Yum
                 break;
             case 'category_like_single': // meals & diets
                 $details = $this->taxonomy->taxonomyPage_single($this->slug);
-                dump($details);
+                //dump($details);
                 $this->load_this_template($details);
                 break;
             case 'tag_like_single':

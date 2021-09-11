@@ -9,11 +9,10 @@ include('commons/main.php');
 <?php 
     
 dump($post_details);
-    
+    TODO:// build html structure as in category_like_single.php
 ?>
 
 
-<a href="<?php //echo "http://".$_SERVER['SERVER_NAME']. "/recipe/$post_slug" ?>"><?php  //echo $post_title;?></a> <br/>
 
 
 <?php endforeach; ?>

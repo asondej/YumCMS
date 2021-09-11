@@ -42,28 +42,54 @@ function get_taxonomy_icon(string $taxonomy, string $value) : string
     return $class;
 }
 
-function get_taxonomy(array $taxonomy_values, string $separator = ', ', $asLink = true) : string
+function get_taxonomy(array $taxonomy_values, string $taxonomy_slug = '', string $separator = ', ', $asLink = true) : string
 {
-
     $list = '';
     $last = count($taxonomy_values);
     $i = 0;
-    foreach ($taxonomy_values as $value=>$link) {
-        $i++;
-        if ($i >= $last) { 
-            if($asLink) {
-                $list.='<a href="'.$link.'">'.$value.'</a>';
+
+    if(!array_key_exists(0, $taxonomy_values)) { // if array is assoc
+        
+        foreach ($taxonomy_values as $value=>$link) {
+            $i++;
+            if ($i >= $last) { 
+                if($asLink) {
+                    $list.='<a href="'.$link.'">'.$value.'</a>';
+                } else {
+                    $list.=$value.$separator;
+                }           
             } else {
-                $list.=$value.$separator;
-            }           
-        } else {
-            if($asLink) {
-                $list.='<a href="'.$link.'">'.$value.'</a>'.$separator;
-            } else {
-                $list.=$value.$separator;
-            }        
+                if($asLink) {
+                    $list.='<a href="'.$link.'">'.$value.'</a>'.$separator;
+                } else {
+                    $list.=$value.$separator;
+                }        
+            }
         }
+
+    } else {
+
+        $link = 'http://'.$_SERVER['SERVER_NAME'].'/'.$taxonomy_slug.'/';
+        foreach ($taxonomy_values as $value) {
+            $slug = str_replace(' ', '-', $value);
+            $i++;
+            if ($i >= $last) { 
+                if($asLink) {
+                    $list.='<a href="'.$link.$slug.'">'.$value.'</a>';
+                } else {
+                    $list.= $value.$separator;
+                }           
+            } else {
+                if($asLink) {
+                    $list.='<a href="'.$link.$slug.'">'.$value.'</a>'.$separator;
+                } else {
+                    $list.= $value.$separator;
+                }        
+            }
+        }
+
     }
+   
 
     return $list;
 

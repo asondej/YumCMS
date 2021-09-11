@@ -35,7 +35,7 @@ include('commons/main.php');
                                 </div>
                                 <div class="line">
                                     <h4>Type:</h4>
-                                    <?php echo get_taxonomy($page['taxonomy']['types']);?>
+                                    <?php  echo get_taxonomy($page['taxonomy']['types']);?>
                                 </div>                
                                 <a class="print" href="<?php echo $_SERVER['REQUEST_URI']; ?>/print">Print</a>              
                             </div>
