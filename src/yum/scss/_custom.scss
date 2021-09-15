@@ -150,6 +150,7 @@ html {
         border: 1px solid #e5e5e5;
         .post-content {
             border:none;
+            padding:22px 52px 10px 52px;
             padding-bottom:0px;
             .yum-diet {
                 background-size: 50px 50px;
@@ -358,7 +359,47 @@ article {
     }
 }
 
+.taglike_single {
+    display:block;
+    padding:15px;
+    span {
+        border:1px solid #e5e5e5;
+        padding:25px;
+        display:block;
+    }
+    
+}
 
+.yum.page {
+    padding-top:70px;
+
+    h1, h2, h3 {
+        font-weight: 400;
+    }
+
+    img {
+        position:relative;
+        margin-bottom:18px;
+        top:7px;
+
+        &.left {
+            float:left; 
+            margin-right:35px;
+            
+        }
+        &.right {
+            float:right; 
+            margin-left:35px;
+        }
+    }
+
+    &.single-speaker {
+        .block {
+            padding-bottom:0px;
+        }
+    }
+
+}
 
 @media (max-width: 991px) { 
     .main-nav .navbar-nav .nav-item .nav-link {

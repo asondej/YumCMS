@@ -16,7 +16,7 @@ require_once(__DIR__ . '/library/helpers.php');
 
 
 use Library\Yum;
-$yum = new Yum(true);
+$yum = new Yum(false);
 //$yum->build_template();
 
 /*
@@ -38,8 +38,8 @@ $yum = new Yum(true);
 - create helper functions for displaying types and tags in template ✔️
 - add printing option to recipe page ✔️
 - create frontend adding form
-- create taxonomy html templates
-- method for displaying pages
+- create taxonomy html templates ✔️
+- class for displaying pages ✔️
 - method for homepage 
 - homepage pagination
 

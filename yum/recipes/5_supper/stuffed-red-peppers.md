@@ -1,6 +1,6 @@
 {
     "title" : "Stuffed red peppers",
-    "image" : "http://www.fillmurray.com/200/300"
+    "image" : "https://images.unsplash.com/photo-1596464716059-f81da526557b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fHN0dWZmZWQlMjBwZXBwZXJzfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
 }
 ===
 

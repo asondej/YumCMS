@@ -5,6 +5,7 @@ namespace Library;
 use Library\Classes\Taxonomy;
 use Library\Classes\Content;
 use Library\Classes\Recipe;
+use Library\Classes\Page;
 
 class Yum 
 {
@@ -153,7 +154,9 @@ class Yum
                 # code...
                 break;
             case 'page':
-                # code...
+                $page = new Page($this->slug);
+                $page = $page->getPage();
+                $this->load_this_template($page);
                 break;
             case 'recipe':
                 $recipe = new Recipe($this->slug);
@@ -162,28 +165,23 @@ class Yum
                 break;
             case 'print':
                 $recipe = new Recipe($this->slug);
-                
                 $recipe = $recipe->getPost($this->slug);
                 $this->load_this_template($recipe);
                 break;
             case 'category_like_single': // meals & diets
                 $details = $this->taxonomy->taxonomyPage_single($this->slug);
-                //dump($details);
                 $this->load_this_template($details);
                 break;
             case 'tag_like_single':
                 $details = $this->taxonomy->taxonomyPage_single($this->slug);
-                dump($details);
                 $this->load_this_template($details);
                 break;
             case 'category_like_all': // meals & diets
                 $details = $this->taxonomy->taxonomyPage_list($this->slug);
-                dump($details);
                 $this->load_this_template($details);
                 break;
             case 'tag_like_all':
                 $details = $this->taxonomy->taxonomyPage_list($this->slug);
-                dump($details);
                 $this->load_this_template($details);
                 break;
             
