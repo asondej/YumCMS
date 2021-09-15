@@ -50,9 +50,17 @@
 
         <li class="nav-item">
           <a class="nav-link" href="<?php echo tax_list_url('tags'); ?>">Tags
+            <span>/</span>
+          </a>
+          
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About
           </a>
         </li>
       </ul>
+
       <a href="#" class="ticket yum-add-new">
         <i class="fas fa-plus-circle"></i>
         <span>Add new</span>

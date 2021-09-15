@@ -449,6 +449,8 @@ class Taxonomy {
             'meals', 'meal' => 'meal',
         };
 
+        $slug = str_replace(' ', '-', $slug);
+
         $url = 'http://'.$_SERVER['SERVER_NAME'].'/'.$tax.'/'.$slug.'/';
         return $url;
     }

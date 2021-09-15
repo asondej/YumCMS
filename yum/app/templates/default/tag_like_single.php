@@ -38,7 +38,7 @@ include('commons/main.php');
 											</div>
 											<div class="date yum-meal <?php echo get_taxonomy_icon('meals', $meal); ?>"><span><?php echo $meal; ?></span></div>
 											<div class="post-title">
-												<h2><a href="news-single.html"><?php echo $title; ?></a></h2>
+												<h2><a href="<?php echo "http://".$_SERVER['SERVER_NAME']. "/recipe/$post_slug" ?>"><?php echo $title; ?></a></h2>
 											</div>
 											<div class="post-meta">
 												<ul class="list-inline">
