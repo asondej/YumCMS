@@ -38,6 +38,7 @@
         "name": "salmon",
         "description": "",
         "posts": [
+            "green-tea-noodles-with-salmon",
             "fresh-salmon-with-thai-noodle-salad"
         ]
     },
@@ -147,6 +148,13 @@
         "description": "",
         "posts": [
             "steamed-asparagus-with-potato-and-leek-sauce"
+        ]
+    },
+    "chilli": {
+        "name": "Chilli",
+        "description": "",
+        "posts": [
+            "green-tea-noodles-with-salmon"
         ]
     }
 }

@@ -81,5 +81,19 @@
         "posts": [
             "gluten-free-blueberry-muffins"
         ]
+    },
+    "fast": {
+        "name": "Fast",
+        "description": "",
+        "posts": [
+            "green-tea-noodles-with-salmon"
+        ]
+    },
+    "oven-grilled": {
+        "name": "Oven grilled",
+        "description": "",
+        "posts": [
+            "green-tea-noodles-with-salmon"
+        ]
     }
 }

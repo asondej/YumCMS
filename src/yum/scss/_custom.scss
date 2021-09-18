@@ -401,6 +401,41 @@ article {
 
 }
 
+select.form-control:not([size]):not([multiple]) {
+    height: auto!important;
+    cursor:pointer;
+
+}
+.yum-form {
+    select {
+        option {
+            height:20px!important;
+        }
+    }
+    .error {
+        color: tomato;
+        position: absolute;
+        top:-18px;
+        font-style: italic;
+        font-size:13px;
+    }
+    .input-error {
+        border: 1px solid tomato;
+        box-shadow:0 0 12px rgba(255, 99, 71, 0.2); 
+    }
+    .success {
+        span {
+            margin-bottom: 20px;
+            display:block;
+            font-weight:bold;
+            a {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+
 @media (max-width: 991px) { 
     .main-nav .navbar-nav .nav-item .nav-link {
         font-weight:bold;

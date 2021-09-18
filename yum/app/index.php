@@ -16,14 +16,13 @@ require_once(__DIR__ . '/library/helpers.php');
 
 
 use Library\Yum;
-$yum = new Yum(false);
-//$yum->build_template();
+$yum = new Yum( cache: true, show_debug_details: false );
+
 
 /*
 //TODO: 
 - move everything except recipes to "app" folder ✔️
     - change paths accordingly ✔️
-- make class for meta
 - read information about meal from folders not files ✔️
 - write information about meal to file (?) - yes, that would be helpfull for showing meals page ✔️
 - read information about rest of the taxonomies from.md files, not taxaonomy jsons ✔️
@@ -34,10 +33,9 @@ $yum = new Yum(false);
 - create method to get links for respective taxonomy pages ✔️
 - method for listing all recipes ✔️
 - method for listing recipes in specific category ✔️
--  method generating links to recipes (?)
 - create helper functions for displaying types and tags in template ✔️
 - add printing option to recipe page ✔️
-- create frontend adding form
+- create frontend adding form ✔️
 - create taxonomy html templates ✔️
 - class for displaying pages ✔️
 - method for homepage 

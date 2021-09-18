@@ -1,5 +1,5 @@
 <?php 
-
+dump($page);
 $image = '';
 if(extension_loaded('gd')) {
     $img = imagecreatefromjpeg($page['meta']['image']);

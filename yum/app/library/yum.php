@@ -6,6 +6,7 @@ use Library\Classes\Taxonomy;
 use Library\Classes\Content;
 use Library\Classes\Recipe;
 use Library\Classes\Page;
+use Library\Classes\RecipeFromForm;
 
 class Yum 
 {
@@ -22,7 +23,7 @@ class Yum
 
     protected string $template = "default";
 
-    public function __construct($show_debug_details = false)
+    public function __construct($show_debug_details = false, $cache = true)
     {
 
         
@@ -37,11 +38,7 @@ class Yum
         $this->set_template($this->slug);
         $this->build_template();
         // external methods
-        $this->taxonomy->update_meals_json();
-        $this->taxonomy->update_taxonomy_json('diets');
-        $this->taxonomy->update_taxonomy_json('types');
-        $this->taxonomy->update_taxonomy_json('tags');
-        $this->taxonomy->taxonomy_generate_links('diets');
+        $this->update_taxonomy($cache);
 
         //$this->taxonomy->list_recipes_in_taxonomy();
 
@@ -56,6 +53,15 @@ class Yum
         }
         
 
+    }
+
+    protected function update_taxonomy(bool $cache) : void 
+    {
+        $this->taxonomy->update_meals_json($cache);
+        $this->taxonomy->update_taxonomy_json('diets',$cache);
+        $this->taxonomy->update_taxonomy_json('types', $cache);
+        $this->taxonomy->update_taxonomy_json('tags', $cache);
+        $this->taxonomy->taxonomy_generate_links('diets');
     }
 
     protected function getSlug() : ?string
@@ -94,8 +100,11 @@ class Yum
                 return "404";
             }
             else {
-                return array_pop($url_parts);
-                
+                // dump(end($url_parts) === 'add');
+                if(end($url_parts) === 'add') {
+                    return "new-recipe";
+                }
+                return array_pop($url_parts);   
             }
             
             return null; // if something goes wrong
@@ -106,6 +115,9 @@ class Yum
         switch(true) {
             case ( $this->getSlug() == "home" ):
                 $this->template_type = "home";
+                break;
+            case ( $this->getSlug() == "new-recipe" ):
+                $this->template_type = "new-recipe";
                 break;
             case ( $this->getSlug() == "print" ):
                 $this->template_type = "print";
@@ -149,6 +161,25 @@ class Yum
         switch ($this->template_type) {
             case 'home':
                 $this->load_this_template();
+                break;
+            case 'new-recipe':
+                $sent = false;
+                $url = null;
+                if(!empty($_POST)) {
+                        $newpost = new RecipeFromForm($this->slug);
+                        if(!empty($_POST['title'])) {
+                            $url = 'http://'.$_SERVER['HTTP_HOST'].'/recipe/'. $newpost->slugify($_POST['title']);
+                        }
+                        $errors = $newpost->validate($_POST);
+                        $sent = true;
+                        $this->update_taxonomy(false);
+                    }
+                $this->load_this_template(['meta' =>
+                    ["title" => 'New recipe form'],
+                    'errors' => $errors,
+                    'sent' => $sent,
+                    'url' => $url
+                    ]);
                 break;
             case 'rss':
                 # code...

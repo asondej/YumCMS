@@ -161,3 +161,45 @@ function show_meals (array $open_close = ['<li><a href="%s" class="%s">','<span 
     return $html;
 }
 
+function formAutocomplete(string $name) : ?string 
+{
+    if(!empty($_POST) && isset($_POST[$name]) ) {
+        return $_POST[$name];
+    }
+    return null;
+}
+
+function selectAutocomplete(string $name, string $value): string
+{
+
+    if (isset($_POST[$name]) ) {
+        if ($_POST[$name] == $value) { // present in post and match the value
+            return 'selected';
+        } else {
+            return '';
+        }
+    } elseif ($value === '') { // not present in post and is placeholder value
+        return 'selected';
+    }
+    return '';  
+    
+}
+
+function validationInfo (array $page, string $name, string $type = 'text') : string
+{
+    $txt = '';
+    
+    if(isset($page['errors']) && in_array($name, $page['errors']) ) {
+
+        if ($type === 'class') {
+            $txt = ' input-error';
+        } else {
+            $txt = '<span class="error">this field is required</span>';
+        }
+        
+   }
+   
+   return $txt;
+   
+}
+

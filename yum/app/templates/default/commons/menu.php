@@ -61,7 +61,7 @@
         </li>
       </ul>
 
-      <a href="#" class="ticket yum-add-new">
+      <a href="/add" class="ticket yum-add-new">
         <i class="fas fa-plus-circle"></i>
         <span>Add new</span>
       </a>

@@ -89,44 +89,42 @@ class Recipe
         $tags_array = []; 
         $tags_array = preg_grep('/([^,\n]+)/', explode("\n", $tax));
 
+        
+        
         $tags_array = array_map(function($value) {
             $value = trim($value); 
             return $value;
         },$tags_array); 
-        
+
         $tags_array = array_filter($tags_array);   
 
+        $toslug = '';
 
-        if(stripos($tags_array[0], 'tags')) { // for tags
-            $tags_array = explode(',', end($tags_array));
+        if(stripos($tags_array[0], 'tags')) {
+            $toslug = 'tags';
+        }
+        elseif(stripos($tags_array[0], 'type')) {
+            $toslug = 'types';
+        }
 
-            $tags_array = array_map(function($value) {
-                $value = trim($value); 
-                return $value;
-            },$tags_array); 
 
-            $tags_array = array_flip($tags_array); 
-            foreach($tags_array as $name=>&$index) {
-                $index = Taxonomy::tax_url_from_slug( Taxonomy::taxonomy_to_slug($name), 'tags');
+        $tags_array[0] = '';
+        $tags_array = explode(',', end($tags_array));
+
+        $tags_array = array_map(function($value) {
+            $value = trim($value); 
+            return $value;
+        },$tags_array); 
+     
+        $tags_array = array_flip($tags_array); 
+        foreach($tags_array as $name=>&$index) {
+            if(!empty($name)){
+                $index = Taxonomy::tax_url_from_slug( Taxonomy::taxonomy_to_slug($name), $toslug);
+            } else {
+                unset($tags_array[$name]);
             }
-
-       } elseif(stripos($tags_array[0], 'type')) { // for types
-            $tags_array = explode(',', end($tags_array));
-
-            $tags_array = array_map(function($value) {
-                $value = trim($value); 
-                return $value;
-            },$tags_array); 
-
-            $tags_array = array_flip($tags_array); 
-            foreach($tags_array as $name=>&$index) {
-                $index = Taxonomy::tax_url_from_slug( Taxonomy::taxonomy_to_slug($name), 'types');
-            }
-       }
-
-
-        
-
+        }
+            
         return $tags_array;
     }
 

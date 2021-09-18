@@ -30,7 +30,7 @@ include('commons/main.php');
                                 </div>
                                 <div class="line">
                                     <h4>Tags:</h4>
-                                    <?php echo get_taxonomy($page['taxonomy']['tags']);?>
+                                    <?php echo get_taxonomy($page['taxonomy']['tags']); ?>
                                 </div>
                                 <div class="line">
                                     <h4>Type:</h4>
