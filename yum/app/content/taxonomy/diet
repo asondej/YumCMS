@@ -17,6 +17,7 @@
         "name": "With meat",
         "description": "Non-vegetarian meals",
         "posts": [
+            "recipe-for-autodelete",
             "basic-chicken-soup",
             "chicken-sweetcorn-ramen"
         ]
@@ -27,6 +28,7 @@
         "posts": [
             "steamed-prawns-in-garlic-sauce",
             "green-tea-noodles-with-salmon",
+            "salmon-with-mango",
             "simple-fish-stew",
             "fresh-salmon-with-thai-noodle-salad",
             "quinoa-salad-grilled-halloumi",

@@ -90,7 +90,8 @@
         "name": "with avocado",
         "description": "",
         "posts": [
-            "avocado-tomatillo-breakfast-tacos"
+            "avocado-tomatillo-breakfast-tacos",
+            "salmon-with-mango"
         ]
     },
     "with-broccoli": {
@@ -157,6 +158,13 @@
         "description": "",
         "posts": [
             "green-tea-noodles-with-salmon"
+        ]
+    },
+    "with-salmon": {
+        "name": "With salmon",
+        "description": "",
+        "posts": [
+            "salmon-with-mango"
         ]
     }
 }
