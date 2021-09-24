@@ -3245,6 +3245,15 @@ html {
 article .post-details {
   padding-bottom: 25px;
 }
+article .autodelete {
+  position: absolute;
+  background: #EF8E1B;
+  font-size: 12px;
+  padding: 2px 5px;
+  border-radius: 5px;
+  right: 15px;
+  bottom: 50px;
+}
 article .taxonomy {
   color: white;
   background: #2A2A37;
@@ -3323,6 +3332,8 @@ article .taxonomy .print:hover {
 article h3, article h2 {
   font-weight: 400;
   font-size: 25px;
+  margin-top: 17px;
+  text-transform: capitalize;
 }
 article .post-thumb {
   padding: 0px;
@@ -3339,6 +3350,10 @@ article ul {
 .widget.tags ul li a {
   font-size: 13px;
   padding: 8px 18px;
+}
+
+nav.pagination {
+  display: block;
 }
 
 .taglike_single {

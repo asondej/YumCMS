@@ -247,6 +247,16 @@ article {
         padding-bottom:25px;
     }
 
+    .autodelete {
+        position: absolute;
+        background:#EF8E1B;
+        font-size:12px;
+        padding: 2px 5px;
+        border-radius: 5px;
+        right:15px;
+        bottom: 50px;
+    }
+
     .taxonomy {
       
         color: white;
@@ -333,6 +343,8 @@ article {
     h3, h2 {
         font-weight: 400;
         font-size: 25px;
+        margin-top: 17px;
+        text-transform: capitalize;
     }
 
     .post-thumb {
@@ -357,6 +369,10 @@ article {
             padding: 8px 18px;
         }
     }
+}
+
+nav.pagination {
+    display:block;
 }
 
 .taglike_single {

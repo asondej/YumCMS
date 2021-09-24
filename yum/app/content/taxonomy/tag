@@ -10,7 +10,8 @@
         "name": "fast",
         "description": "",
         "posts": [
-            "peanut-butter-pie"
+            "peanut-butter-pie",
+            "fried-banana-chips"
         ]
     },
     "shrimps": {
@@ -126,7 +127,8 @@
         "name": "easy to make",
         "description": "",
         "posts": [
-            "basic-chicken-soup"
+            "basic-chicken-soup",
+            "fried-banana-chips"
         ]
     },
     "with-fish": {

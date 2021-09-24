@@ -11,6 +11,7 @@
         "description": "",
         "posts": [
             "peanut-butter-pie",
+            "fried-banana-chips",
             "stuffed-red-peppers"
         ]
     },
@@ -28,13 +29,6 @@
             "broccoli-salad",
             "fresh-salmon-with-thai-noodle-salad",
             "quinoa-salad-grilled-halloumi"
-        ]
-    },
-    "easy": {
-        "name": "easy",
-        "description": "",
-        "posts": [
-            "broccoli-salad"
         ]
     },
     "steamed": {
@@ -80,13 +74,6 @@
         "description": "",
         "posts": [
             "gluten-free-blueberry-muffins"
-        ]
-    },
-    "fast": {
-        "name": "Fast",
-        "description": "",
-        "posts": [
-            "green-tea-noodles-with-salmon"
         ]
     },
     "oven-grilled": {

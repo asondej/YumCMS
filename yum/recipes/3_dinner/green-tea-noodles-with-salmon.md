@@ -41,4 +41,4 @@ with meat   []
 chilli, salmon
 ===
 # Type:
-fast, oven grilled
+oven grilled

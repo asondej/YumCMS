@@ -12,6 +12,10 @@ var paths = {
         src: "src/yum/scss/style.scss",
         dest: "yum/app/templates/default/css",
     },
+    print: {
+        src: "src/yum/scss/print.scss",
+        dest: "yum/app/templates/default/css",
+    },
     images: {
         src: [
             "src/yum/images/**/*.png",
@@ -42,6 +46,13 @@ function style_compressed() {
         .pipe(gulp.dest(paths.style.dest))                                          // save
 } exports.css = style_compressed
 
+function print() {
+    return gulp.src( paths.print.src)
+        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+        .pipe(rename("./print.min.css"))   
+        .pipe(gulp.dest(paths.print.dest))                                          // save
+} exports.print = print
+
 function style_uncompressed() {
     return gulp.src( paths.style.src)
         .pipe(sass().on('error', sass.logError))
@@ -63,7 +74,7 @@ function scripts() {
 // =============== DEFAULT & WATCH
 
 function watcher(){
-    gulp.watch(paths.watch, { delay: 1000 }, gulp.parallel(style_compressed, style_uncompressed, images, scripts)) // gulp.series/gulp.parallel
+    gulp.watch(paths.watch, { delay: 1000 }, gulp.parallel(style_compressed, style_uncompressed, images, scripts, print)) // gulp.series/gulp.parallel
   } exports.watch = watcher
 
 gulp.task('default', gulp.series(watcher));

@@ -249,6 +249,7 @@ class Taxonomy {
             $raw_content = file_get_contents($recipe);
             $content_parts = Recipe::split_raw($raw_content); 
             $meta = json_decode($content_parts[0], true);
+            //dump($meta);
             array_push($all,[
                 "recipe" => $recipe,
                 "title" => $meta['title'],
@@ -500,7 +501,6 @@ class Taxonomy {
 
     public function taxonomyPage_single() : array // page details
     {
-
         $parts = [];
         preg_match('/-(.+)+$/', $this->slug, $parts);
         $tax_type = [];

@@ -16,7 +16,7 @@ require_once(__DIR__ . '/library/helpers.php');
 
 
 use Library\Yum;
-$yum = new Yum( cache: true, show_debug_details: false );
+$yum = new Yum( cache: true, show_debug_details: false, autodelete: true );
 
 
 /*
@@ -38,8 +38,8 @@ $yum = new Yum( cache: true, show_debug_details: false );
 - create frontend adding form ✔️
 - create taxonomy html templates ✔️
 - class for displaying pages ✔️
-- method for homepage 
-- homepage pagination
+- method for homepage ✔️
+- homepage pagination ✔️
 
 */
 

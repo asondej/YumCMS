@@ -36,7 +36,8 @@ include('commons/main.php');
                                     <h4>Type:</h4>
                                     <?php  echo get_taxonomy($page['taxonomy']['types']);?>
                                 </div>                
-                                <a class="print" href="<?php echo $_SERVER['REQUEST_URI']; ?>/print">Print</a>              
+                                <a class="print" href="<?php echo $_SERVER['REQUEST_URI']; ?>/print">Print</a> 
+                                <?php if(isset($page['autodelete'])): ?> <span class="autodelete">This recipe will be autodeleted in few minutes time</span>   <?php endif; ?>          
                             </div>
 
                             <div class="post-thumb col-xl-5 order-sm-1 order-xs-1" style="background:url(<?php echo $page['meta']['image']; ?>); background-size:cover">

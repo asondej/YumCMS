@@ -38,5 +38,5 @@ with meat   []
 with broccoli
 ===
 # Type:
-salad, easy
+salad
 

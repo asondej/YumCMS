@@ -7,6 +7,7 @@ use Library\Classes\Content;
 use Library\Classes\Recipe;
 use Library\Classes\Page;
 use Library\Classes\RecipeFromForm;
+use Library\Classes\HomePage;
 
 class Yum 
 {
@@ -19,11 +20,13 @@ class Yum
     protected array $diets;
     protected array $types;
     protected array $tags;
+
+    protected bool $autodelete;
    
 
     protected string $template = "default";
 
-    public function __construct($show_debug_details = false, $cache = true)
+    public function __construct($show_debug_details = false, $cache = true, $autodelete = false)
     {
 
         
@@ -32,6 +35,7 @@ class Yum
         $this->diets = Taxonomy::get_diets();
         $this->types = Taxonomy::get_types();
         $this->tags = Taxonomy::get_tags();
+        $this->autodelete = $autodelete;
 
         $this->taxonomy = new Taxonomy($this->slug);
         // own methods
@@ -42,7 +46,11 @@ class Yum
 
         //$this->taxonomy->list_recipes_in_taxonomy();
 
-        
+        if($this->autodelete) {
+            if(Recipe::autodelete($this->autodelete)) { // if something was deleted
+                $this->update_taxonomy(false);
+            }
+        }
         
         if($show_debug_details) {
             echo "<div class='noprint'><br>=====<br> slug: ". $this->slug;
@@ -160,19 +168,24 @@ class Yum
     {
         switch ($this->template_type) {
             case 'home':
-                $this->load_this_template();
+                $content = new HomePage();
+                //$content = $content->build_homepage_data();
+                $content = $content->paginate($this->slug, 12);
+                $this->load_this_template($content);
                 break;
             case 'new-recipe':
                 $sent = false;
                 $url = null;
                 if(!empty($_POST)) {
-                        $newpost = new RecipeFromForm($this->slug);
+                        $newpost = new RecipeFromForm($this->slug, $this->autodelete);
                         if(!empty($_POST['title'])) {
                             $url = 'http://'.$_SERVER['HTTP_HOST'].'/recipe/'. $newpost->slugify($_POST['title']);
                         }
                         $errors = $newpost->validate($_POST);
                         $sent = true;
                         $this->update_taxonomy(false);
+                    } else {
+                        $errors = [];
                     }
                 $this->load_this_template(['meta' =>
                     ["title" => 'New recipe form'],

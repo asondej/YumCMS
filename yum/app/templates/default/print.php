@@ -1,5 +1,10 @@
+<html>
+<head>
+    <link rel="stylesheet" media="print" href="<?php echo template_path(); ?>css/print.min.css" />
+    <link rel="stylesheet" href="<?php echo template_path(); ?>css/print.min.css" />
+</head>
+<body>
 <?php 
-dump($page);
 $image = '';
 if(extension_loaded('gd')) {
     $img = imagecreatefromjpeg($page['meta']['image']);
@@ -18,8 +23,11 @@ echo '<button class="noprint" style="margin-top:15px; margin-bottom:15px; cursor
 echo '<hr style="margin-top:10px; margin-bottom:20px;" class="noprint"/>';
 echo $image;
 echo '<h4 style="display:inline-block; margin-top:0px;">'.$page['taxonomy']['diet'].'</h4>';
-echo '<h2 style="margin-bottom:50px;">'.$page['meta']['title'].'</h2>';
+echo '<h2>'.$page['meta']['title'].'</h2>';
 echo '<div>&nbsp;</div>'. $page['content'];
+?>
+</body>
+</html>
 
 
 

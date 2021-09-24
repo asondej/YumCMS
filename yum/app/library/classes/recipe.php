@@ -11,27 +11,34 @@ class Recipe
 {
     private string $slug;
     private string $file_name;
+    protected bool $autodelete;
 
-    public function __construct(string $slug) 
+    public function __construct(string $slug, bool $autodelete = false) 
     {
         $this->slug = $slug;
+
+        $this->autodelete = $autodelete;
 
         $slug_recipe = explode("/", $this->slug);
         $slug_recipe = array_pop($slug_recipe); // only post name, without "recipe"
         $this->file_name = $slug_recipe;
     }
 
-    public function getPost(): ?array
+    public function getPost(?string $path = null): ?array
     {
     
+      
         $path = $this->get_post_file_path();
-
+    
         $post_raw = file_get_contents($path); 
         $post_raw = self::split_raw($post_raw);  
         
+    
 
         $post_meta = $post_raw[0];
         $post_content_raw = $post_raw[1];
+
+
 
 
         $post = [
@@ -51,7 +58,13 @@ class Recipe
             "content" => $this->parse_markdown($post_content_raw),
         ];
 
+        $meta_array = json_decode($post_meta, true);
+        if(isset($meta_array['autodelete'])) {
+            $post['autodelete'] = $meta_array['timestamp'];
+        }
+
         $post = array_merge($this->get_taxonomy($this->slug), $post);
+
         return $post;
 
     }
@@ -72,9 +85,43 @@ class Recipe
 
     }
 
-/*
-* string $type ["tags", "types"]
-*/
+    public static function autodelete(bool $autodeleteActive, int $time = 5 * 60) : bool 
+    {
+
+        if ($autodeleteActive) {
+
+            $now = time();
+            $something_was_deleted = false;
+            $recipes = self::list_all_recipes();
+            $recipes_to_delete = [];
+            $recipes = array_map(function($value) {
+                return $_SERVER["DOCUMENT_ROOT"].'/recipes/'.$value.'.md';
+            }, $recipes );
+
+            foreach ($recipes as $recipe) {
+                $raw  = file_get_contents($recipe);
+                $raw = json_decode((explode('===', $raw )[0]), true);
+                if(isset($raw['autodelete'])) {
+                    $recipes_to_delete[$recipe] = $raw['timestamp'];
+                }
+            }
+
+            foreach ($recipes_to_delete as $recipe_path=>$timestamp ) {
+                if($now - $timestamp >= $time) {
+                    unlink($recipe_path);
+                    $something_was_deleted = true; 
+                }
+            }
+
+            return $something_was_deleted;
+
+        }
+
+    }
+
+    /*
+    * string $type ["tags", "types"]
+    */
     ## type values: 'tags' | 'types'
     private function get_post_taglike_taxonomies(string $type) : array
     {
@@ -165,8 +212,7 @@ class Recipe
         if ( in_array( $this->file_name, $all_posts_names) ) { 
             $index_in_allPost_list = array_search($this->file_name, $all_posts_names);
             $path = $all_posts[$index_in_allPost_list];
-            // debug(data: $this->file_name);
-            // debug(data: $all_posts_names);
+
             if($folder_only) {
                 $elements = explode("/", $path);
                 $folder_name = explode("_", $elements[0]);
@@ -225,7 +271,7 @@ class Recipe
         return $all_posts;
     }
     
-    private function get_taxonomy() : ?array //TODO: is this still necessary?
+    private function get_taxonomy() : ?array 
     {
 
         $taxonomy = [ 'taxonomy' => [
@@ -265,6 +311,8 @@ class Recipe
             'tags',
             $taxonomy
         );
+
+      
 
         return $taxonomy;
 

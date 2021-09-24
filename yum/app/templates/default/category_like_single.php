@@ -18,14 +18,13 @@ include('commons/main.php');
 
 
                             <?php foreach($page['posts'] as $post_slug=>$post_details): 
-                            $title = $post_details['title'];
-                            $slug = $post_slug;
-                            $image = $post_details['image'];
-                            $meal = $post_details['meal'];
-                            $diet = $post_details['diet'];
-                            $types = $post_details['types'];
-                            $tags = $post_details['tags'];
-                            //dump($image);
+								$title = $post_details['title'];
+								$slug = $post_slug;
+								$image = $post_details['image'];
+								$meal = $post_details['meal'];
+								$diet = $post_details['diet'];
+								$types = $post_details['types'];
+								$tags = $post_details['tags'];
                             ?>
 
 								<div class="col-xl-4 col-lg-6 col-md-6 col-12 equal-item">

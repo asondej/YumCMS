@@ -5,7 +5,7 @@ namespace Library\Classes;
 
 class RecipeFromForm extends Recipe {
 
-    //protected $recipes_folder = $_SERVER["DOCUMENT_ROOT"].'\/recipes\/';
+    
 
     public function validate (array $post) : ?array 
     {
@@ -20,8 +20,6 @@ class RecipeFromForm extends Recipe {
             }
         }
 
-        //dumpdie($errors);
-
         if (empty($errors)) {  // on success;
             $this->newRecipe($post);
             return null;
@@ -33,12 +31,23 @@ class RecipeFromForm extends Recipe {
 
     protected function newRecipe (array $post) : void 
     {
+       
         $recipes_folder = $_SERVER["DOCUMENT_ROOT"].'/recipes/';
 
         $meal = $post['meal'];
         $recipe_file_name = $this->slugify($post['title']);
         $recipe_content = $post['content'];
         $diet = $post['diet'];
+        $autodelete = '';
+
+        if ($this->autodelete) {
+           $autodelete =
+    '"autodelete" : "true",
+    "timestamp" : "'.time().'"';
+        } else {
+            $autodelete = '';
+        }
+
 
         $diet_txt =
 'vege        []
@@ -50,7 +59,8 @@ with meat   []';
         $content =
 '{
     "title" : "'.trim($post['title']).'",
-    "image" : "'.trim($post['image']).'"
+    "image" : "'.trim($post['image']).'",
+    '.$autodelete.'
 }
 ===
 '.$recipe_content.'
