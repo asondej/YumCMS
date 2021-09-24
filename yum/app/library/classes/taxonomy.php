@@ -77,7 +77,7 @@ class Taxonomy {
 
         # edit json content
         $meals_from_folders = $this->get_meals_and_recipes();
-        $meals_json = file_get_contents(ABS_PATH. $this::$folder . $this::$meals); //debug($meals_json);
+        $meals_json = file_get_contents(ABS_PATH. $this::$folder . $this::$meals); 
         $meals_json = json_decode($meals_json); 
 
         foreach ($meals_json as $meal_slug=>$meal_details) { // json file with meals details
@@ -249,7 +249,7 @@ class Taxonomy {
             $raw_content = file_get_contents($recipe);
             $content_parts = Recipe::split_raw($raw_content); 
             $meta = json_decode($content_parts[0], true);
-            //dump($meta);
+
             array_push($all,[
                 "recipe" => $recipe,
                 "title" => $meta['title'],
@@ -261,9 +261,6 @@ class Taxonomy {
             ]);
 
         }
-
-        
-        //dump(file_get_contents());
     
         foreach ($all as &$recipe_tax_details) {
 
@@ -521,8 +518,6 @@ class Taxonomy {
             'posts'=> $posts_in,
         ];
 
-        //dump($page);
-        
         return $page;
     }
 

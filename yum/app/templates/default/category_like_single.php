@@ -3,8 +3,6 @@
 include('commons/header.php');
 include('commons/menu.php');
 include('commons/main.php');
-
-//dump($post_details);
 ?>
 
 <section class="news section">

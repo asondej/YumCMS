@@ -47,7 +47,7 @@ class Yum
         //$this->taxonomy->list_recipes_in_taxonomy();
 
         if($this->autodelete) {
-            if(Recipe::autodelete($this->autodelete)) { // if something was deleted
+            if(Recipe::autodelete($this->autodelete, 60*5)) { // if something was deleted
                 $this->update_taxonomy(false);
             }
         }
@@ -108,7 +108,7 @@ class Yum
                 return "404";
             }
             else {
-                // dump(end($url_parts) === 'add');
+                
                 if(end($url_parts) === 'add') {
                     return "new-recipe";
                 }

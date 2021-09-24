@@ -51,8 +51,7 @@ class HomePage {
     public function paginate(string $slug, int $howMany = 10) : array
     {
         $recipes = $this->build_homepage_data();
-        //if not isset page -> first 10, if isset then numer and...
-        //dump($recipes, 'oryginalny');
+
 
         $paginated_array = [
             'meta' => $recipes['meta'],

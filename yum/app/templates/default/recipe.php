@@ -52,7 +52,7 @@ include('commons/main.php');
 
                                 <div class="post-details">
                                     <?php
-                                     //dump($page); 
+
                                      echo $page['content'];
                                      ?>
                                     <!-- <div class="share-block">

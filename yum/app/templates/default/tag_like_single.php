@@ -23,7 +23,7 @@ include('commons/main.php');
                             $diet = $post_details['diet'];
                             $types = $post_details['types'];
                             $tags = $post_details['tags'];
-                            //dump($image);
+
                             ?>
 
 								<div class="col-xl-4 col-lg-6 col-md-6 col-12 equal-item">

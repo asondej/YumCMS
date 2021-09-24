@@ -35,7 +35,7 @@ class RecipeFromForm extends Recipe {
         $recipes_folder = $_SERVER["DOCUMENT_ROOT"].'/recipes/';
 
         $meal = $post['meal'];
-        $recipe_file_name = $this->slugify($post['title']);
+        $recipe_file_name = htmlspecialchars($this->slugify($post['title']));
         $recipe_content = $post['content'];
         $diet = $post['diet'];
         $autodelete = '';
@@ -58,8 +58,8 @@ with meat   []';
 
         $content =
 '{
-    "title" : "'.trim($post['title']).'",
-    "image" : "'.trim($post['image']).'",
+    "title" : "'.htmlspecialchars(trim($post['title'])).'",
+    "image" : "'.htmlspecialchars(trim($post['image'])).'",
     '.$autodelete.'
 }
 ===
@@ -69,10 +69,10 @@ with meat   []';
 '.$diet.'
 ===
 # Tags: 
-'.trim($post['tags']).'
+'.htmlspecialchars(trim($post['tags'])).'
 ===
 # Type:
-'.trim($post['types']).'
+'.htmlspecialchars(trim($post['types'])).'
 ';
         
         $file = fopen($recipes_folder.$meal.'/'.$recipe_file_name.'.md', 'a');

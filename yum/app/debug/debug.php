@@ -93,7 +93,6 @@ function debug( $data, ?string $comment = null, bool $important = false, bool $b
 function dump( $data, ?string $comment = null, bool $important = false, bool $backtrace = false ) : void
 {  
     $type = "print_r";
-    //var_dump(get_debug_type($data)) ;
     $where = debug_backtrace(limit:1);
     $background = DebugTools::setBackground($important);
     echo DebugTools::tagsOpen($background, $comment, $type);
