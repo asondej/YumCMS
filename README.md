@@ -1,5 +1,5 @@
 # Yum
-Simple and database-less cookbook for your best recipes.__[DEMO](http://yum.asondej.com/)__
+Simple and database-less cookbook for your best recipes. __[DEMO](http://yum.asondej.com/)__
 <br>
 [![Yum logo](https://github.com/asondej/Yum/blob/main/yum/app/templates/default/images/yum-logo.svg)](http://yum.asondej.com/)
 
@@ -26,8 +26,8 @@ Open file index.php and set "autodelete" option to ```false```
 
 ### Create and edit new recipe
 
-You can create new recipe by using form on a website, or by creating new title-recipe.md file in 'recipes' folder. You can edit the files to change recipe content.
-You can use markdown in your recipes.
+You can create new recipe by using form on a website, or by creating new title-recipe.md file in 'recipes' folder. You can edit the files to change recipe content,
+and use markdown.
 
 
 
