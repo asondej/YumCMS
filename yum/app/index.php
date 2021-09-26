@@ -6,13 +6,6 @@ include_once("debug/debug.php");
 require_once(__DIR__ . '/vendor/autoload.php');
 require_once(__DIR__ . '/config.php');
 require_once(__DIR__ . '/library/helpers.php');
-// require_once(__DIR__ . '/library/yum.php');
-// require_once(__DIR__ . '/library/classes/taxonomy.php');
-// require_once(__DIR__ . '/library/classes/content.php');
-// require_once(__DIR__ . '/library/interface/interfacePost.php');
-// require_once(__DIR__ . '/library/interface/interfaceCategory_like.php');
-// require_once(__DIR__ . '/library/interface/interfaceTag_like.php');
-// require_once(__DIR__ . '/library/classes/recipe.php');
 
 
 use Library\Yum;
