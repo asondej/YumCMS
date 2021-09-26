@@ -5,7 +5,9 @@
 
     "autoload": {
         "psr-4": {
-            "Library\\" : "library"
+            "Library\\" : "library",
+            "Library\\Classes\\" : "library/classes",
+            "Library\\Interface\\" : "library/interface"
         }
     }
 

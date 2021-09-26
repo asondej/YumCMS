@@ -21,6 +21,8 @@ class ComposerStaticInitc3863f17e4926b8277b4c3abf4b83221
         ),
         'L' => 
         array (
+            'Library\\Interface\\' => 18,
+            'Library\\Classes\\' => 16,
             'Library\\' => 8,
             'League\\Config\\' => 14,
             'League\\CommonMark\\' => 18,
@@ -39,6 +41,14 @@ class ComposerStaticInitc3863f17e4926b8277b4c3abf4b83221
         'Psr\\EventDispatcher\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/event-dispatcher/src',
+        ),
+        'Library\\Interface\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/library/interface',
+        ),
+        'Library\\Classes\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/library/classes',
         ),
         'Library\\' => 
         array (
@@ -114,6 +124,7 @@ class ComposerStaticInitc3863f17e4926b8277b4c3abf4b83221
         'Nette\\Utils\\Reflection' => __DIR__ . '/..' . '/nette/utils/src/Utils/Reflection.php',
         'Nette\\Utils\\RegexpException' => __DIR__ . '/..' . '/nette/utils/src/Utils/exceptions.php',
         'Nette\\Utils\\Strings' => __DIR__ . '/..' . '/nette/utils/src/Utils/Strings.php',
+        'Nette\\Utils\\Type' => __DIR__ . '/..' . '/nette/utils/src/Utils/Type.php',
         'Nette\\Utils\\UnknownImageFileException' => __DIR__ . '/..' . '/nette/utils/src/Utils/exceptions.php',
         'Nette\\Utils\\Validators' => __DIR__ . '/..' . '/nette/utils/src/Utils/Validators.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
