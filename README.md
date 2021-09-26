@@ -1,8 +1,8 @@
 # Yum
 Simple and database-less cookbook for your best recipes.
 
-![Yum logo](https://github.com/asondej/Yum/blob/main/yum/app/templates/default/images/yum-logo.svg)
-[DEMO](http://yum.asondej.com/)
+![Yum logo](https://github.com/asondej/Yum/blob/main/yum/app/templates/default/images/yum-logo.svg)(http://yum.asondej.com/)
+<br>[DEMO](http://yum.asondej.com/)
 
 ## What do I need?
 
